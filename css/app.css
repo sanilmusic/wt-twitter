@@ -1,0 +1,360 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+
+/* Grid */
+.red {
+    clear: both;
+    padding: 0;
+    margin: 0;
+    zoom: 1;
+}
+
+.red:before,
+.red:after {
+    content: '';
+    display: table;
+}
+
+.red:after {
+    clear: both;
+}
+
+.kolona {
+    display: block;
+    float: left;
+    margin: 1% 0 1% 1.6%;
+}
+
+.kolona:first-child {
+    margin-left: 0;
+}
+
+.kolona.kolona-1 {
+    width: 15.33%;
+}
+
+.kolona.kolona-2 {
+    width: 32.26%;
+}
+
+.kolona.kolona-3 {
+    width: 49.2%;
+}
+
+.kolona.kolona-4 {
+    width: 66.13%;
+}
+
+.kolona.kolona-5 {
+    width: 83.06%;
+}
+
+.kolona.kolona-6 {
+    width: 100%;
+}
+
+@media only screen and (max-width: 450px) {
+    .kolona {
+        margin: 1% 0 1% 0;
+    }
+
+    .kolona.kolona-1,
+    .kolona.kolona-2,
+    .kolona.kolona-3,
+    .kolona.kolona-4,
+    .kolona.kolona-5,
+    .kolona.kolona-6 {
+        width: 100%;
+    }
+}
+
+/* Generalno */
+body {
+    width: 100%;
+    margin: 0 auto;
+}
+
+input, textarea {
+    padding: 6px 12px;
+    border: 1px solid #ac9fbb;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+button {
+    color: #000;
+    background-color: #f7ebec;
+    border-color: #ac9fbb; 
+    padding: 5px 10px;
+    border: 1px solid #ac9fbb;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover,
+button:focus,
+button:active {
+    background-color: #ddbdd5;
+    border-color: #ac9fbb; 
+}
+
+a {
+    color: #ac9fbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover {
+    color: #ddbdd5;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+/* Ostalo */
+header {
+    width: 100%;
+    background-color: #1d1e2c;
+    padding: 5px;
+}
+
+header:after,
+.poruka:after {
+    content: '';
+    clear: both;
+    display: table;
+}
+
+img.logo {
+    width: 150px;
+    height: 45px;
+}
+
+header .right {
+    line-height: 45px;
+}
+
+header .right input {
+    margin-right: 5px;
+}
+
+header .right button {
+    margin-left: 5px;
+}
+
+.kontejner {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.posljednje-poruke {
+    overflow-y: auto;
+    height: 250px;
+}
+
+.poruka {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.poruka .slika-profila {
+    width: 22%;
+    float: left;
+    margin-right: 10px;
+}
+
+.poruka .balon {
+    width: 73%;
+    float: left;
+    position: relative;
+    padding: 5px;
+    background: #f7ebec;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.poruka .balon:after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 12px 23px 12px 0;
+    border-color: transparent #f7ebec;
+    display: block;
+    width: 0;
+    z-index: 1;
+    left: -23px;
+    top: 13px;
+}
+
+.forma-registracije input,
+.forma-registracije button,
+.forma-izgubljene-lozinke input,
+.forma-izgubljene-lozinke button,
+.forma-nalog input,
+.forma-nalog textarea {
+    width: 100%;
+}
+
+header.prijavljen {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+header.prijavljen .meni {
+    line-height: 45px;
+}
+
+header.prijavljen .meni ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header.prijavljen .meni ul li {
+    display: inline;
+    padding-right: 15px;
+}
+
+header.prijavljen .logo {
+    margin: 0 auto;
+    display: block;
+}
+
+header.prijavljen .pretraga {
+    text-align: right;
+    line-height: 45px;
+}
+
+.moja-slika {
+    width: 100%;
+}
+
+h1.ime-prezime {
+    margin: 0;
+}
+
+span.korisnicko-ime {
+    color: #777;
+}
+
+.trendovi {
+    width: 100%;
+    border: 2px solid #1d1e2c;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 5px;
+    background-color: #f7ebec;
+    padding: 10px;
+}
+
+.trendovi h3 {
+    margin: 0;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: #1d1e2c;
+}
+
+.trendovi ul {
+    list-style: none;
+    margin: 0;
+    padding: 5px;
+}
+
+.trendovi ul li {
+    margin-bottom: 10px;
+}
+
+.trendovi ul li:last-child {
+    margin-bottom: 0;
+}
+
+.trendovi ul li span.broj-poruka {
+    color: #777;
+    font-size: 0.9em;
+    display: block;
+}
+
+.strana {
+    padding: 5px;
+}
+
+p.kratak-opis {
+    text-align: justify;
+    font-size: 14px;
+}
+
+.statistika {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.statistika:after {
+    content: '';
+    clear: both;
+    display: table;
+}
+
+.statistika .podatak {
+    display: block;
+    width: 33%;
+    text-align: center;
+    float: left;
+    font-size: 16px;
+}
+
+.profil-poruke {
+    padding-left: 20px;
+}
+
+.profil-poruke .poruka .balon {
+    width: 100%;
+}
+
+.profil-prati .korisnik {
+    width: 100%;
+    border: 1px solid #1d1e2c;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.clear {
+    clear: both;
+}
+
+.profil-prati .korisnik .slika {
+    width: 25%;
+    float: left;
+    margin-bottom: 5px;
+}
+
+.profil-prati .korisnik h3 {
+    margin: 0;
+}
+
+.profil-prati button {
+    width: 100%;
+}
+
+.tekst-desno {
+    text-align: right;
+}
