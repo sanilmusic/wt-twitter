@@ -121,37 +121,119 @@ a:hover {
     float: right;
 }
 
-/* Ostalo */
+header:after,
+.poruka:after,
+header.prijavljen:after,
+.statistika:after {
+    content: '';
+    clear: both;
+    display: table;
+}
+
 header {
     width: 100%;
     background-color: #1d1e2c;
     padding: 5px;
 }
 
-header:after,
-.poruka:after {
-    content: '';
-    clear: both;
-    display: table;
+/* Zaglavlje */
+header.odjavljen .right {
+    line-height: 52px;
 }
 
-img.logo {
-    width: 150px;
-    height: 45px;
-}
-
-header .right {
-    line-height: 45px;
-}
-
-header .right input {
+header.odjavljen .right input {
     margin-right: 5px;
 }
 
-header .right button {
+header.odjavljen .right button {
     margin-left: 5px;
 }
 
+@media only screen and (max-width: 790px) {
+    header.odjavljen .left {
+        width: 100%;
+    }
+
+    header.odjavljen .right {
+        width: 100%;
+        text-align: center;
+    }
+
+    header.odjavljen .left img {
+        display: block;
+        margin: 0 auto;
+    }
+
+    header.odjavljen .right input {
+        width: 45%;
+    }
+}
+
+header.prijavljen {
+    padding: 10px 20px;
+}
+
+header.prijavljen .meni,
+header.prijavljen .logo,
+header.prijavljen .pretraga {
+    float: left;
+    width: 33.33%;
+    line-height: 52px;
+}
+
+header.prijavljen .meni ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header.prijavljen .meni ul li {
+    display: inline;
+    padding-right: 15px;
+}
+
+header.prijavljen .logo img {
+    margin: 0 auto;
+    display: block;
+}
+
+header.prijavljen .pretraga {
+    text-align: right;
+}
+
+@media only screen and (max-width: 990px) {
+    header.prijavljen .meni,
+    header.prijavljen .logo {
+        width: 50%;
+    }
+
+    header.prijavljen .logo img {
+        float: right;
+        clear: right;
+    }
+
+    header.prijavljen .pretraga {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    header.prijavljen .meni,
+    header.prijavljen .logo {
+        width: 100%;
+    }
+
+    header.prijavljen .meni {
+        text-align: center;
+    }
+
+    header.prijavljen .logo img {
+        float: none;
+        clear: none;
+    }
+}
+
+/* Ostalo */
 .kontejner {
     max-width: 850px;
     margin: 0 auto;
@@ -206,36 +288,6 @@ header .right button {
 .forma-nalog input,
 .forma-nalog textarea {
     width: 100%;
-}
-
-header.prijavljen {
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-header.prijavljen .meni {
-    line-height: 45px;
-}
-
-header.prijavljen .meni ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-header.prijavljen .meni ul li {
-    display: inline;
-    padding-right: 15px;
-}
-
-header.prijavljen .logo {
-    margin: 0 auto;
-    display: block;
-}
-
-header.prijavljen .pretraga {
-    text-align: right;
-    line-height: 45px;
 }
 
 .moja-slika {
@@ -304,12 +356,6 @@ p.kratak-opis {
 .statistika {
     width: 100%;
     margin-bottom: 10px;
-}
-
-.statistika:after {
-    content: '';
-    clear: both;
-    display: table;
 }
 
 .statistika .podatak {
