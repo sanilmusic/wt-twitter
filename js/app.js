@@ -32,4 +32,12 @@ function parsirajUrl() {
 }
 
 window.onhashchange = parsirajUrl;
-window.onload = parsirajUrl;
+window.onload = function() {
+    parsirajUrl();
+
+    document.getElementsByTagName('body').item(0).addEventListener('click', function(e) {
+        if (e.target.id === 'obavijesti') {
+            e.preventDefault();
+        }
+    });
+}
