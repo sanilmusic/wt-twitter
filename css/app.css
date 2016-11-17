@@ -125,22 +125,29 @@ a:hover {
     float: right;
 }
 
-header:after,
-.poruka:after,
-header.prijavljen:after,
-.statistika:after {
+.clearfix:after {
     content: '';
     clear: both;
     display: table;
 }
 
+hr {
+    border: none;
+    height: 1px;
+    background-color: #1d1e2c;
+}
+
+.tekst-desno {
+    text-align: right;
+}
+
+/* Zaglavlje */
 header {
     width: 100%;
     background-color: #1d1e2c;
     padding: 5px;
 }
 
-/* Zaglavlje */
 header.odjavljen .right {
     line-height: 52px;
 }
@@ -285,12 +292,9 @@ header.prijavljen .pretraga {
     top: 13px;
 }
 
-.forma-registracije input,
-.forma-registracije button,
-.forma-izgubljene-lozinke input,
-.forma-izgubljene-lozinke button,
-.forma-nalog input,
-.forma-nalog textarea {
+.forma-max input,
+.forma-max button,
+.forma-max textarea {
     width: 100%;
 }
 
@@ -320,12 +324,6 @@ span.korisnicko-ime {
 
 .trendovi h3 {
     margin: 0;
-}
-
-hr {
-    border: none;
-    height: 1px;
-    background-color: #1d1e2c;
 }
 
 .trendovi ul {
@@ -387,10 +385,6 @@ p.kratak-opis {
     padding: 5px;
 }
 
-.clear {
-    clear: both;
-}
-
 .profil-prati .korisnik .slika {
     width: 25%;
     float: left;
@@ -405,6 +399,6 @@ p.kratak-opis {
     width: 100%;
 }
 
-.tekst-desno {
-    text-align: right;
+.forma-nalog button {
+    width: auto;
 }
