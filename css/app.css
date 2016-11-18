@@ -219,10 +219,12 @@ header.prijavljen .meni ul {
     list-style: none;
     margin: 0;
     padding: 0;
+    position: relative;
 }
 
 header.prijavljen .meni ul li {
-    display: inline;
+    display: block;
+    float: left;
     padding-right: 15px;
 }
 
@@ -291,6 +293,26 @@ header.prijavljen .hamburger-nav {
     header.prijavljen .max-640 {
         display: block;
     }
+}
+
+/* Dropdown menu */
+header.prijavljen .meni ul li ul {
+    display: none;
+    position: absolute;
+    z-index: 2;
+}
+
+header.prijavljen .meni ul li:hover ul {
+    display: block;
+    background-color: #1d1e2c;
+}
+
+header.prijavljen .meni ul li ul li {
+    border-bottom: 1px solid #ac9fbb;
+    display: block;
+    padding-left: 15px;
+    width: 150px;
+    float: none;
 }
 
 /* Ostalo */
