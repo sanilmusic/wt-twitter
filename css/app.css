@@ -226,6 +226,10 @@ header.prijavljen .meni ul li {
     padding-right: 15px;
 }
 
+header.prijavljen .meni ul li:last-child {
+    padding-right: 0;
+}
+
 header.prijavljen .logo img {
     margin: 0 auto;
     display: block;
