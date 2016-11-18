@@ -40,11 +40,15 @@ window.onload = function() {
         while (el !== null && el.tagName !== 'A') {
             el = el.parentElement;
         }
-
         if (el === null) {
             return;
-        } else if (e.target.dataset.traverse === 'false') {
+        } else if (el.dataset.traverse === 'false') {
             e.preventDefault();
+        }
+
+        if (el.id === 'toggle-menu') {
+            var meni = document.getElementById('max-640-meni');
+            meni.style.display = (meni.style.display === 'block' ? 'none' : 'block');
         }
     });
 }

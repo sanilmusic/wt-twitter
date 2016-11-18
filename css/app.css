@@ -239,6 +239,20 @@ header.prijavljen .pretraga {
     text-align: right;
 }
 
+header.prijavljen .min-640 {
+    display: block;
+}
+
+header.prijavljen .max-640 {
+    display: none;
+}
+
+header.prijavljen .hamburger-nav {
+    float: left;
+    width: 5%;
+    line-height: 52px;
+}
+
 @media only screen and (max-width: 990px) {
     header.prijavljen .meni,
     header.prijavljen .logo {
@@ -256,18 +270,26 @@ header.prijavljen .pretraga {
 }
 
 @media only screen and (max-width: 640px) {
-    header.prijavljen .meni,
-    header.prijavljen .logo {
-        width: 100%;
-    }
-
     header.prijavljen .meni {
+        width: 100%;
+        display: none;
         text-align: center;
+    }
+    header.prijavljen .logo {
+        width: 95%;
     }
 
     header.prijavljen .logo img {
-        float: none;
-        clear: none;
+        float: right;
+        clear: right;
+    }
+
+    header.prijavljen .min-640 {
+        display: none;
+    }
+
+    header.prijavljen .max-640 {
+        display: block;
     }
 }
 
