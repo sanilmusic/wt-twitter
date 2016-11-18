@@ -36,7 +36,14 @@ window.onload = function() {
     parsirajUrl();
 
     document.getElementsByTagName('body').item(0).addEventListener('click', function(e) {
-        if (e.target.id === 'obavijesti') {
+        var el = e.target;
+        while (el !== null && el.tagName !== 'A') {
+            el = el.parentElement;
+        }
+
+        if (el === null) {
+            return;
+        } else if (e.target.dataset.traverse === 'false') {
             e.preventDefault();
         }
     });
