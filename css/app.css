@@ -149,7 +149,7 @@ hr {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 99999;
+    z-index: 3;
 }
 
 #loading .ikona {
@@ -323,6 +323,7 @@ header.prijavljen .meni ul li ul li {
 #galerija img {
     display: none;
     width: 100%;
+    cursor: pointer;
 }
 
 #galerija img.aktivna {
@@ -347,6 +348,21 @@ header.prijavljen .meni ul li ul li {
 #galerija a.naredna {
     top: 50%;
     right: 0;
+}
+
+#galerija-fullscreen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .75);
+    z-index: 4;
+    display: none;
+    outline: none;
+}
+
+#galerija-fullscreen img {
+    display: block;
+    margin: 10px auto;
 }
 
 /* Ostalo */

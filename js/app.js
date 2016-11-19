@@ -38,6 +38,12 @@ TWITTER = {
         }
     },
     profil: function() {
+        document.getElementById('galerija-fullscreen').addEventListener('keydown', function(e) {
+            if (e.keyCode === 27) {
+                this.style.display = 'none';
+            }
+        });
+
         var roditelj = document.getElementById('galerija');
 
         roditelj.getElementsByClassName('prethodna').item(0).addEventListener('click', function(e) {
@@ -74,7 +80,26 @@ TWITTER = {
 
             aktivna.className = '';
             nova.className = 'aktivna';
-        })
+        });
+
+        var slike = roditelj.getElementsByTagName('img');
+        for (var i = 0; i < slike.length; i++) {
+            slike.item(i).addEventListener('click', function(e) {
+                var fullscreen = document.getElementById('galerija-fullscreen');
+
+                fullscreen.innerHTML = '';
+
+                var nova = fullscreen.appendChild(this.cloneNode(true)),
+                    sirina = Math.max(document.documentElement.clientWidth, window.innerWidth || 0),
+                    visina = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+
+                nova.style.maxWidth = (sirina - 20) + 'px';
+                nova.style.maxHeight = (visina - 20) + 'px';
+
+                fullscreen.style.display = 'block';
+                fullscreen.focus();
+            });
+        }
     }
 };
 
