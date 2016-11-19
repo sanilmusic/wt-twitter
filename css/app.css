@@ -315,6 +315,40 @@ header.prijavljen .meni ul li ul li {
     float: none;
 }
 
+/* Galerija */
+#galerija {
+    position: relative;
+}
+
+#galerija img {
+    display: none;
+    width: 100%;
+}
+
+#galerija img.aktivna {
+    display: block;
+}
+
+#galerija a {
+    background-color: rgba(29, 30, 44, .05);
+    padding: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 2;
+}
+
+#galerija a.prethodna {
+    top: 50%;
+    left: 0;
+}
+
+#galerija a.naredna {
+    top: 50%;
+    right: 0;
+}
+
 /* Ostalo */
 .kontejner {
     max-width: 850px;
@@ -366,10 +400,6 @@ header.prijavljen .meni ul li ul li {
 .forma-max input,
 .forma-max button,
 .forma-max textarea {
-    width: 100%;
-}
-
-.moja-slika {
     width: 100%;
 }
 

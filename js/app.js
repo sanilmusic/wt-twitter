@@ -46,9 +46,44 @@ window.onload = function() {
             e.preventDefault();
         }
 
+        // Meni
         if (el.id === 'toggle-menu') {
             var meni = document.getElementById('max-640-meni');
             meni.style.display = (meni.style.display === 'block' ? 'none' : 'block');
+        }
+
+        // Galerija
+        if (el.className === 'prethodna' || el.className === 'naredna') {
+            var roditelj = document.getElementById('galerija'),
+                aktivna = roditelj.getElementsByClassName('aktivna').item(0),
+                nova = null;
+            
+            if (el.className === 'prethodna') {
+                nova = aktivna.previousElementSibling;
+
+                if (nova === null || nova.tagName !== 'IMG') {
+                    // Pomjeramo se do posljednje slike
+                    nova = aktivna;
+
+                    while (nova.nextElementSibling && nova.nextElementSibling.tagName === 'IMG') {
+                        nova = nova.nextElementSibling;
+                    }
+                }
+            } else if (el.className === 'naredna') {
+                nova = aktivna.nextElementSibling;
+
+                if (nova === null || nova.tagName !== 'IMG') {
+                    // Pomjeramo se do prve slike
+                    nova = aktivna;
+
+                    while (nova.previousElementSibling && nova.previousElementSibling.tagName === 'IMG') {
+                        nova = nova.previousElementSibling;
+                    }
+                }
+            }
+
+            aktivna.className = '';
+            nova.className = 'aktivna';
         }
     });
 }
