@@ -37,6 +37,47 @@ TWITTER = {
             });
         }
     },
+    index: function() {
+        var forma = document.getElementById('novi-nalog-forma');
+
+        forma.addEventListener('submit', function(e) {
+            var zaustavi = false;
+
+            zaustavi |= !validirajIme();
+            zaustavi |= !validirajPrezime();
+            zaustavi |= !validirajEmail();
+            zaustavi |= !validirajLozinku();
+            
+            if (zaustavi) {
+                e.preventDefault();
+            }
+        });
+    },
+    izgubljenaLozinka: function() {
+        var forma = document.getElementById('izgubljena-lozinka-forma');
+
+        forma.addEventListener('submit', function(e) {
+            if (!validirajEmail()) {
+                e.preventDefault();
+            }
+        });
+    },
+    nalog: function() {
+        var forma = document.getElementById('nalog-forma');
+
+        forma.addEventListener('submit', function(e) {
+            var zaustavi = false;
+
+            zaustavi |= !validirajIme();
+            zaustavi |= !validirajPrezime();
+            zaustavi |= !validirajEmail();
+            zaustavi |= !validirajLozinku();
+            
+            if (zaustavi) {
+                e.preventDefault();
+            }
+        });
+    },
     profil: function() {
         document.getElementById('galerija-fullscreen').addEventListener('keydown', function(e) {
             if (e.keyCode === 27) {

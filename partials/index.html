@@ -32,35 +32,40 @@
         </div>
         <div class="kolona kolona-3">
             <h3>Novi nalog?</h3>
-            <form action="#" method="post" class="forma-max">
+            <form action="#" method="post" class="forma-max" id="novi-nalog-forma">
                 <div class="red">
                     <label for="ime" class="kolona kolona-2">Ime</label>
                     <div class="kolona kolona-4">
                         <input type="text" name="ime" id="ime">
+                        <span class="detaljno">Ime ne smije biti prazno!</span>
                     </div>
                 </div>
                 <div class="red">
                     <label for="prezime" class="kolona kolona-2">Prezime</label>
                     <div class="kolona kolona-4">
                         <input type="text" name="prezime" id="prezime">
+                        <span class="detaljno">Prezime ne smije biti prazno!</span>
                     </div>
                 </div>
                 <div class="red">
                     <label for="email" class="kolona kolona-2">Email adresa</label>
                     <div class="kolona kolona-4">
                         <input type="text" name="email" id="email">
+                        <span class="detaljno">Neispravna email adresa!</span>
                     </div>
                 </div>
                 <div class="red">
                     <label for="lozinka" class="kolona kolona-2">Lozinka</label>
                     <div class="kolona kolona-4">
                         <input type="password" name="lozinka" id="lozinka">
+                        <span class="detaljno">Lozinka ne smije biti kraća od 6 znakova!</span>
                     </div>
                 </div>
                 <div class="red">
                     <label for="potvrda-lozinke" class="kolona kolona-2">Potvrda lozinke</label>
                     <div class="kolona kolona-4">
                         <input type="password" name="potvrda-lozinke" id="potvrda-lozinke">
+                        <span class="detaljno">Potvrda se ne poklapa sa unesenom lozinkom!</span>
                     </div>
                 </div>
                 <button type="submit">Napravi nalog</button>

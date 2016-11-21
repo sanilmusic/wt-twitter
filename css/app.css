@@ -137,6 +137,22 @@ hr {
     background-color: #1d1e2c;
 }
 
+.detaljno {
+    display: none;
+}
+
+.neispravan {
+    color: #a94442;
+}
+
+.neispravan input {
+    border-color: #a94442;
+}
+
+.neispravan .detaljno {
+    display: block;
+}
+
 .tekst-desno {
     text-align: right;
 }
