@@ -13,7 +13,7 @@ Sve forme (osim login forme gdje nema prostora za poruku) imaju validaciju i pri
 ###### Šta nije urađeno?
 /
 
-# Bug-ovi
+###### Bug-ovi
 Nisu uočeni bug-ovi.
 
 ###### Lista fajlova
