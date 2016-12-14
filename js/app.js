@@ -160,7 +160,7 @@ UTIL = {
 
 function ucitajStranicu(ime) {
     loadingAnimation('show');
-    ajaxRequest('GET', 'partials/' + ime + '.html', function(html) {
+    ajaxRequest('GET', 'index.php?sta=partials/' + ime, function(html) {
         document.getElementById('sadrzaj').innerHTML = html;
         loadingAnimation('hide');
         UTIL.exec(ime);

@@ -1,16 +1,4 @@
-<header class="clearfix odjavljen">
-    <div class="left">
-        <a href="#"><img src="images/logo.png" alt="BTC"></a>
-    </div>
-    <div class="right">
-        <form action="#" method="post">
-            <input type="text" name="email" placeholder="Email adresa" autofocus>
-            <input type="password" name="lozinka" placeholder="Lozinka">
-            <a href="#izgubljenaLozinka">Izgubljena lozinka?</a>
-            <button type="submit">Prijavi se</button>
-        </form>
-    </div>
-</header>
+<?php view('Partials/zaglavlje') ?>
 <div class="kontejner">
     <div class="red">
         <div class="kolona kolona-3">

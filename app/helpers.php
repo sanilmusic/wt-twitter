@@ -21,3 +21,13 @@ function view($ime, $data = [])
 
     require $lok;
 }
+
+/**
+ * Provjerava da li je trenutni posjetitelj prijavljeni korisnik ili gost.
+ * 
+ * @return bool
+ */
+function prijavljen()
+{
+    return false;
+}
