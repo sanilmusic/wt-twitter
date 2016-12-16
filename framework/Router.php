@@ -24,7 +24,7 @@ class Router
     private function registruj($ruta, $akcija, $vrsta = 'GET')
     {
         if (array_key_exists($ruta, $this->rute)) {
-            $this->rute[$rute][$vrsta] = $akcija;
+            $this->rute[$ruta][$vrsta] = $akcija;
         } else {
             $this->rute[$ruta] = [
                 $vrsta => $akcija
