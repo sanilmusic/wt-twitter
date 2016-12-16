@@ -88,17 +88,16 @@ abstract class Model
     }
 
     /**
-     * Vraća model kod kojeg definisani atribut ima definisanu vrijednost.
+     * Vraća modele koji zadovoljavaju definisane uslove.
      * 
-     * @param  string $atribut
-     * @param  string $ocekivano
-     * @return array
+     * @param  array $uslovi
+     * @return void
      */
-    public static function trazi($atribut, $ocekivano)
+    public static function trazi($uslovi)
     {
         $rezultati = [];
 
-        $cvorovi = static::traziCvorove($atribut, $ocekivano);
+        $cvorovi = static::traziCvorove($uslovi);
         foreach ($cvorovi as $cvor) {
             $rezultati[] = static::kreirajIzCvora($cvor);
         }
@@ -114,7 +113,9 @@ abstract class Model
      */
     public static function traziId($id)
     {
-        $rezultati = static::trazi('id', $id);
+        $rezultati = static::trazi([
+            'id' => $id
+        ]);
 
         if (empty($rezultati)) {
             return null;
@@ -145,22 +146,26 @@ abstract class Model
     }
 
     /**
-     * Traži čvor u XML dokumentu kod kojeg definisani ključ sadrži
-     * definisanu vrijednost.
+     * Traži čvorove u XML dokumentu koji zadovoljavaju definisane uslove.
      * 
-     * @param  string $atribut
-     * @param  string $ocekivano
+     * @param  array $uslovi
      * @return array
      */
-    protected function traziCvorove($atribut, $ocekivano)
+    protected function traziCvorove($uslovi)
     {
         $xml = static::dajXml();
 
         $rezultati = [];
         foreach ($xml->sadrzaj->children() as $child) {
-            $vrijednost = (string) $child->$atribut;
+            $podudara = true;
 
-            if ($vrijednost == $ocekivano) {
+            foreach ($uslovi as $atribut => $ocekivano) {
+                if ($child->$atribut != $ocekivano) {
+                    $podudara = false;
+                }
+            }
+
+            if ($podudara) {
                 $rezultati[] = $child;
             }
         }
