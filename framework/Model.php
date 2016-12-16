@@ -107,6 +107,23 @@ abstract class Model
     }
 
     /**
+     * Vraća model sa definisanim ID-om.
+     * 
+     * @param  int $id
+     * @return \App\Model
+     */
+    public static function traziId($id)
+    {
+        $rezultati = static::trazi('id', $id);
+
+        if (empty($rezultati)) {
+            return null;
+        }
+
+        return $rezultati[0];
+    }
+
+    /**
      * Kreira novi model na osnovu čvora koji je već spremeljen u bazu.
      * 
      * @param  \SimpleXMLElement $cvor
