@@ -1,4 +1,4 @@
-<?php view('Partials/zaglavlje') ?>
+<?php view('Partials/header', ['akcija' => 'nalog']) ?>
 <div class="kontejner">
     <div class="red">
         <div class="kolona kolona-2 strana prijavljeni-korisnik">
@@ -66,3 +66,4 @@
         </div>
     </div>
 </div>
+<?php view('Partials/footer') ?>

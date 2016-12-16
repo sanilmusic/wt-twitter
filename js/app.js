@@ -141,6 +141,27 @@ TWITTER = {
                 fullscreen.focus();
             });
         }
+
+        var tabLinkovi = document.querySelectorAll('[data-tab]'),
+            tabovi = document.getElementById('tabovi').children;
+
+        for (var i = 0; i < tabLinkovi.length; i++) {
+            var link = tabLinkovi.item(i);
+
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                for (var j = 0; j < tabovi.length; j++) {
+                    var tab = tabovi.item(j);
+
+                    if (tab.id === 'tab-' + e.srcElement.getAttribute('data-tab')) {
+                        ukloniKlasu(tab, 'skriven');
+                    } else {
+                        dodajKlasu(tab, 'skriven');
+                    }
+                }
+            });
+        }
     }
 };
 
@@ -158,26 +179,6 @@ UTIL = {
     },
 };
 
-function ucitajStranicu(ime) {
-    loadingAnimation('show');
-    ajaxRequest('GET', 'index.php?sta=partials/' + ime, function(html) {
-        document.getElementById('sadrzaj').innerHTML = html;
-        loadingAnimation('hide');
-        UTIL.exec(ime);
-    });
-}
-
-function parsirajUrl() {
-    var hash = null;
-
-    if (location.hash === '' || location.hash === '#') {
-        hash = 'index';
-    } else {
-        hash = location.hash.substr(1);
-    }
-
-    ucitajStranicu(hash);
-}
-
-window.onhashchange = parsirajUrl;
-window.onload = parsirajUrl;
+window.onload = function() {
+    UTIL.exec(document.body.getAttribute('data-akcija'));
+};

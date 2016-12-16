@@ -157,6 +157,10 @@ hr {
     text-align: right;
 }
 
+.skriven {
+    display: none;
+}
+
 /* Loading */
 #loading {
     background: rgba(0, 0, 0, .25);
