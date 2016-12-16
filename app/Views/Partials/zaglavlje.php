@@ -1,4 +1,4 @@
-<?php if (!prijavljen()): ?>
+<?php if (!korisnik()): ?>
     <header class="clearfix odjavljen">
         <div class="left">
             <a href="#"><img src="images/logo.png" alt="BTC"></a>

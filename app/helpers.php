@@ -23,11 +23,26 @@ function view($ime, $data = [])
 }
 
 /**
- * Provjerava da li je trenutni posjetitelj prijavljeni korisnik ili gost.
+ * Vraća model trenutnog korisnika ili NULL ukoliko korisnik nije prijavljen.
  * 
- * @return bool
+ * @return \App\Models\Korisnik
  */
-function prijavljen()
+function korisnik()
 {
-    return false;
+    static $korisnik, $provjeren = false;
+
+    if ($provjeren) {
+        return $korisnik;
+    }
+
+    // Kasnije provjere nisu potrebne
+    $provjeren = true;
+
+    if (!array_key_exists('userId', $_SESSION)) {
+        return null;
+    }
+
+    $korisnik = Korisnik::traziId($_SESSION['userId']);
+
+    return $korisnik;
 }

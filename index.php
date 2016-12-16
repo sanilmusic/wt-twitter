@@ -1,6 +1,9 @@
 <?php
 
+// Debugging
 ini_set('display_errors', 'on');
+
+session_start();
 
 define('PATH', dirname(__FILE__));
 

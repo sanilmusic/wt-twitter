@@ -1,5 +1,5 @@
 <?php view('Partials/zaglavlje') ?>
-<?php if (prijavljen()): ?>
+<?php if (korisnik()): ?>
     <div class="kontejner">
         <div class="red">
             <div class="kolona kolona-2 strana">
