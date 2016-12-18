@@ -2,12 +2,18 @@
 
 namespace Framework;
 
+use Framework\Greske;
+use Framework\Validator;
+
 abstract class Kontroler
 {
     protected function view($ime, $data = [])
     {
         // Gdje se nalazi view?
         $lok = $this->dajImeKontrolera() . '/' . $ime;
+
+        // Automatski uključi klasu za manipulaciju greškama
+        $data['fGreske'] = new Greske(array_key_exists('fGreske', $_SESSION) ? $_SESSION['fGreske'] : []);
 
         view($lok, $data);
     }
@@ -74,10 +80,15 @@ abstract class Kontroler
      * Preusmjeri korisnika na neku drugu rutu.
      * 
      * @param  string $ruta
+     * @param  mixed $dodatno
      * @return void
      */
-    protected function redirect($ruta)
+    protected function redirect($ruta, $dodatno = null)
     {
+        if ($dodatno instanceof Validator) {
+            $_SESSION['noveJednokratne']['fGreske'] = $dodatno->dajGreske();
+        }
+
         if ($ruta == '/') {
             header('Location: index.php');
         } else {
