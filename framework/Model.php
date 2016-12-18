@@ -46,7 +46,9 @@ abstract class Model
      */
     public function __get($ime)
     {
-        if (!array_key_exists($ime, $this->atributi)) {
+        if ($ime == 'id') {
+            return $this->id;
+        } elseif (!array_key_exists($ime, $this->atributi)) {
             return null;
         }
 
