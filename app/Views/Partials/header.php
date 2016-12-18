@@ -15,7 +15,7 @@
                 <a href="index.php"><img src="images/logo.png" alt="BTC"></a>
             </div>
             <div class="right">
-                <form action="#" method="post">
+                <form action="index.php?sta=prijava" method="post">
                     <input type="text" name="email" placeholder="Email adresa" autofocus>
                     <input type="password" name="lozinka" placeholder="Lozinka">
                     <a href="index.php?sta=lozinka">Izgubljena lozinka?</a>
