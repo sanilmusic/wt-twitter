@@ -20,6 +20,9 @@ function view($ime, $data = [])
 
     extract($data);
 
+    // Omogući pristup prijavljenom korisniku
+    $korisnik = korisnik();
+
     require $lok;
 }
 
