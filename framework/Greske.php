@@ -58,4 +58,19 @@ class Greske
 
         return $default;
     }
+
+    /**
+     * Formiraj HTML za ispis greške.
+     * 
+     * @param  string $sta
+     * @return string
+     */
+    public function formatiranaGreska($sta)
+    {
+        if (!$this->ima($sta)) {
+            return '';
+        }
+
+        return '<span class="detaljno">' . $this->sve[$sta] . '</span>';
+    }
 }
