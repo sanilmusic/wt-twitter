@@ -125,6 +125,24 @@ abstract class Model
     }
 
     /**
+     * Vraća prvog korisnika koji zadovoljava uslove.
+     * 
+     * @param  array $uslovi
+     * @param  mixed $default
+     * @return mixed
+     */
+    public static function dajPrvog($uslovi, $default = null)
+    {
+        $rezultati = static::trazi($uslovi);
+
+        if (empty($rezultati)) {
+            return $default;
+        }
+
+        return $rezultati[0];
+    }
+
+    /**
      * Kreira novi model na osnovu čvora koji je već spremeljen u bazu.
      * 
      * @param  \SimpleXMLElement $cvor
