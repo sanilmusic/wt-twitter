@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Korisnik;
 use Framework\Exceptions\InvalidViewException;
 
 /**
