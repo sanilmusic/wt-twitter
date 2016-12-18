@@ -94,6 +94,8 @@ abstract class Kontroler
         } else {
             header('Location: index.php?sta=' . $ruta);
         }
+
+        die;
     }
 
     /**
