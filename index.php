@@ -27,8 +27,11 @@ require PATH . '/app/routes.php';
 require PATH . '/app/helpers.php';
 
 // Podesi jednokratne sesije
-$_SESSION = array_merge($_SESSION, $_SESSION['noveJednokratne']);
-$stareJednokratne = array_keys($_SESSION['noveJednokratne']);
+$stareJednokratne = [];
+if (array_key_exists('noveJednokratne', $_SESSION)) {
+    $_SESSION = array_merge($_SESSION, $_SESSION['noveJednokratne']);
+    $stareJednokratne = array_keys($_SESSION['noveJednokratne']);
+}
 $_SESSION['noveJednokratne'] = [];
 
 // Preostale aktivnosti obavlja router
