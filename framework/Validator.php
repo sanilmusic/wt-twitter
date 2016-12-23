@@ -11,7 +11,8 @@ class Validator
      */
     private $sabloni = [
         'potrebno' => 'Polje ne smije biti izostavljeno.',
-        'email' => 'Unos nije ispravna email adresa.'
+        'email' => 'Unos nije ispravna email adresa.',
+        'min' => 'Unos mora biti dug barem :atribut-0 znakova.'
     ];
 
     /**
@@ -129,6 +130,10 @@ class Validator
             case 'email':
                 return $this->validirajEmail($polje);
                 break;
+
+            case 'min':
+                return $this->validirajMin($polje, $atributi[0]);
+                break;
         }
     }
 
@@ -144,7 +149,7 @@ class Validator
         $smjene = [];
 
         for ($i = 0; $i < count($atributi); $i++) {
-            $smjene['atribut-' . $i] = $atributi[$i];
+            $smjene[':atribut-' . $i] = $atributi[$i];
         }
 
         return strtr($this->sabloni[$kljuc], $smjene);
@@ -183,5 +188,17 @@ class Validator
     private function validirajEmail($polje)
     {
         return filter_var($this->input($polje), FILTER_VALIDATE_EMAIL);
+    }
+
+    /**
+     * Potvrdi da je unos duži od minimalne dužine.
+     * 
+     * @param  string $polje
+     * @param  int $min
+     * @return bool
+     */
+    private function validirajMin($polje, $min)
+    {
+        return (strlen($this->input($polje)) >= $min);
     }
 }
