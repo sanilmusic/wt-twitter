@@ -5,11 +5,11 @@ namespace Framework;
 class Validator
 {
     /**
-     * Niz grešaka koje su povezane sa pravilima.
+     * Niz šablona na osnovu kojih se generišu greške.
      * 
      * @var array
      */
-    private $poruke = [
+    private $sabloni = [
         'potrebno' => 'Polje ne smije biti izostavljeno.',
         'email' => 'Unos nije ispravna email adresa.'
     ];
@@ -59,10 +59,12 @@ class Validator
         foreach ($this->pravila as $polje => $pravila) {
             $nizPravila = explode('|', $pravila);
 
-            foreach ($nizPravila as $pravilo) {
-                if (!$this->validirajPolje($polje, $pravilo)) {
+            foreach ($nizPravila as $strPravila) {
+                list($kljuc, $atributi) = $this->rasclani($strPravila);
+
+                if (!$this->validirajPolje($polje, $kljuc, $atributi)) {
                     $valid = false;
-                    $this->greske[$polje] = $this->poruke[$pravilo];
+                    $this->greske[$polje] = $this->sastaviGresku($kljuc, $atributi);
                     break;
                 }
             }
@@ -94,15 +96,32 @@ class Validator
     }
 
     /**
+     * Raščlanjuje pravilo na ključ i proslijeđene atribute.
+     * 
+     * @param  string $strPravila
+     * @return array
+     */
+    private function rasclani($strPravila)
+    {
+        $dijelovi = explode(':', $strPravila);
+
+        // Izdvoji ključ i ostavi atribute u istom nizu
+        $kljuc = array_shift($dijelovi);
+
+        return [$kljuc, $dijelovi];
+    }
+
+    /**
      * Validiraj jedno polje po osnovu jednog pravila.
      * 
      * @param  string $polje
-     * @param  string $pravilo
+     * @param  string $kljuc
+     * @param  array $atributi
      * @return bool
      */
-    private function validirajPolje($polje, $pravilo)
+    private function validirajPolje($polje, $kljuc, array $atributi)
     {
-        switch ($pravilo) {
+        switch ($kljuc) {
             case 'potrebno':
                 return $this->validirajPotrebno($polje);
                 break;
@@ -111,6 +130,24 @@ class Validator
                 return $this->validirajEmail($polje);
                 break;
         }
+    }
+
+    /**
+     * Sastavlja grešku na osnovu ključa i atributa pravila.
+     * 
+     * @param  string $kljuc
+     * @param  array $atributi
+     * @return string
+     */
+    private function sastaviGresku($kljuc, array $atributi)
+    {
+        $smjene = [];
+
+        for ($i = 0; $i < count($atributi); $i++) {
+            $smjene['atribut-' . $i] = $atributi[$i];
+        }
+
+        return strtr($this->sabloni[$kljuc], $smjene);
     }
 
     /**
