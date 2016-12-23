@@ -78,6 +78,20 @@ TWITTER = {
             }
         });
     },
+    prijava: function() {
+        var forma = document.getElementById('prijava-forma');
+
+        forma.addEventListener('submit', function(e) {
+            var zaustavi = false;
+
+            zaustavi |= !validirajEmail();
+            zaustavi |= !validirajLozinku(true);
+
+            if (zaustavi) {
+                e.preventDefault();
+            }
+        });
+    },
     profil: function() {
         document.getElementById('galerija-fullscreen').addEventListener('keydown', function(e) {
             if (e.keyCode === 27) {
