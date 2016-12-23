@@ -122,17 +122,19 @@ class Validator
      */
     private function validirajPolje($polje, $kljuc, array $atributi)
     {
+        $unos = $this->input($polje);
+
         switch ($kljuc) {
             case 'potrebno':
-                return $this->validirajPotrebno($polje);
+                return $this->validirajPotrebno($unos);
                 break;
 
             case 'email':
-                return $this->validirajEmail($polje);
+                return $this->validirajEmail($unos);
                 break;
 
             case 'min':
-                return $this->validirajMin($polje, $atributi[0]);
+                return $this->validirajMin($unos, $atributi[0]);
                 break;
         }
     }
@@ -169,36 +171,34 @@ class Validator
     /**
      * Potvrdi da je polje proslijeđeno na ulaz.
      * 
-     * @param  string $polje
+     * @param  string $unos
      * @return bool
      */
-    private function validirajPotrebno($polje)
+    private function validirajPotrebno($unos)
     {
-        $unos = $this->input($polje);
-
         return (($unos !== null) && ($unos !== ''));
     }
 
     /**
      * Potvrdi da unos ispravna email adresa.
      * 
-     * @param  string $polje
+     * @param  string $unos
      * @return bool
      */
-    private function validirajEmail($polje)
+    private function validirajEmail($unos)
     {
-        return filter_var($this->input($polje), FILTER_VALIDATE_EMAIL);
+        return filter_var($unos, FILTER_VALIDATE_EMAIL);
     }
 
     /**
      * Potvrdi da je unos duži od minimalne dužine.
      * 
-     * @param  string $polje
+     * @param  string $unos
      * @param  int $min
      * @return bool
      */
-    private function validirajMin($polje, $min)
+    private function validirajMin($unos, $min)
     {
-        return (strlen($this->input($polje)) >= $min);
+        return (strlen($unos) >= $min);
     }
 }
