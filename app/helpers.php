@@ -50,3 +50,14 @@ function korisnik()
 
     return $korisnik;
 }
+
+/**
+ * Počisti tekst koji se ispisuje tako da se spriječe XSS napadi.
+ * 
+ * @param  string $tekst
+ * @return string
+ */
+function e($tekst)
+{
+    return htmlspecialchars($tekst);
+}
