@@ -2,11 +2,18 @@
 
 namespace Framework;
 
+use Framework\Unosi;
 use Framework\Greske;
 use Framework\Validator;
 
 abstract class Kontroler
 {
+    public function __construct()
+    {
+        // Zapamti ranije unesene vrijednosti
+        $_SESSION['noveJednokratne']['fData'] = $_POST;
+    }
+
     protected function view($ime, $data = [])
     {
         // Gdje se nalazi view?
@@ -14,6 +21,9 @@ abstract class Kontroler
 
         // Automatski uključi klasu za manipulaciju greškama
         $data['fGreske'] = new Greske(array_key_exists('fGreske', $_SESSION) ? $_SESSION['fGreske'] : []);
+
+        // Automatski uključi ranije unesene vrijednosti u formu
+        $data['fData'] = new Unosi(array_key_exists('fData', $_SESSION) ? $_SESSION['fData'] : []);
 
         view($lok, $data);
     }
