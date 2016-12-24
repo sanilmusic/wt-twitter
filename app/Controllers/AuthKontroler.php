@@ -47,6 +47,12 @@ class AuthKontroler extends Kontroler
         $this->redirect('/');
     }
 
+    public function odjava()
+    {
+        unset($_SESSION['userId']);
+        $this->redirect('/');
+    }
+
     public function registracija()
     {
         $input = $this->post(['ime', 'prezime', 'email', 'lozinka', 'potvrda_lozinke']);

@@ -53,7 +53,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="index.php?sta=odjavi-se">
+                                    <a href="index.php?sta=odjava">
                                         <i class="fa fa-sign-out"></i>
                                         Odjavi se
                                     </a>
@@ -94,7 +94,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="index.php?sta=odjavi-se">
+                            <a href="index.php?sta=odjava">
                                 <i class="fa fa-sign-out"></i>
                                 Odjavi se
                             </a>
