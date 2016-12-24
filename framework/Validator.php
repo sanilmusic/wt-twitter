@@ -12,7 +12,9 @@ class Validator
     private $sabloni = [
         'potrebno' => 'Polje ne smije biti izostavljeno.',
         'email' => 'Unos nije ispravna email adresa.',
-        'min' => 'Unos mora biti dug barem :atribut-0 znakova.'
+        'min' => 'Unos mora biti dug barem :atribut-0 znakova.',
+        'jedinstveno' => 'Unos već postoji.',
+        'potvrdjeno' => 'Unesena vrijednost se ne poklapa sa potvrdom.'
     ];
 
     /**
@@ -136,6 +138,14 @@ class Validator
             case 'min':
                 return $this->validirajMin($unos, $atributi[0]);
                 break;
+
+            case 'jedinstveno':
+                return $this->validirajJedinstveno($polje, $unos, $atributi[0]);
+                break;
+
+            case 'potvrdjeno':
+                return $this->validirajPotvrdjeno($unos, $atributi[0]);
+                break;
         }
     }
 
@@ -200,5 +210,37 @@ class Validator
     private function validirajMin($unos, $min)
     {
         return (strlen($unos) >= $min);
+    }
+
+    /**
+     * Potvrdi da je unos jedinstven u bazi.
+     *
+     * @param  string $polje
+     * @param  string $unos
+     * @param  string $model
+     * @return bool
+     */
+    private function validirajJedinstveno($polje, $unos, $model)
+    {
+        $klasa = '\\App\\Models\\' . $model;
+        $uslovi = [
+            $polje => $unos
+        ];
+
+        $modeli = call_user_func_array([$klasa, 'dajPrvog'], [$uslovi]);
+
+        return (count($modeli) == 0);
+    }
+
+    /**
+     * Potvrdi da je unos ispravno potvrđen.
+     * 
+     * @param  string $unos
+     * @param  string $poljePotvrde
+     * @return bool
+     */
+    private function validirajPotvrdjeno($unos, $poljePotvrde)
+    {
+        return ($unos == $this->input($poljePotvrde));
     }
 }
