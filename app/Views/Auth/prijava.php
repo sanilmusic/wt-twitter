@@ -10,7 +10,7 @@
                 <div class="red <?= ($fGreske->ima('email') ? 'neispravan' : '') ?>">
                     <label for="email" class="kolona kolona-2">Email adresa</label>
                     <div class="kolona kolona-4">
-                        <input type="text" name="email" id="email">
+                        <input type="text" name="email" id="email" value="<?= e($fData->daj('email')) ?>">
                         <?= $fGreske->formatiranaGreska('email') ?>
                     </div>
                 </div>
