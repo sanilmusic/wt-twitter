@@ -29,12 +29,17 @@ class AuthKontroler extends Kontroler
 
         // Provjeri da li korisnik postoji
         $korisnik = Korisnik::dajPrvog([
-            'email' => $input['email'],
-            'lozinka' => $input['lozinka']
+            'email' => $input['email']
         ]);
 
         if (!$korisnik) {
             $validator->registrujGresku('email', 'Korisnik nije pronađen.');
+            $this->redirect('prijava', $validator);
+        }
+
+        // Provjeri da li je lozinka ispravna
+        if (!password_verify($input['lozinka'], $korisnik->lozinka)) {
+            $validator->registrujGresku('lozinka', 'Pogrešna lozinka za navedenog korisnika.');
             $this->redirect('prijava', $validator);
         }
 
