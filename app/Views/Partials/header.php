@@ -43,7 +43,7 @@
                         <li>
                             <a href="index.php?sta=nalog">
                                 <i class="fa fa-user-circle"></i>
-                                Korisnik
+                                <?= e(korisnik()->ime) ?>
                             </a>
                             <ul>
                                 <li>
