@@ -233,6 +233,18 @@ abstract class Model
     }
 
     /**
+     * Vraća niz svih atributa postavljenih nad modelom.
+     * 
+     * @return array
+     */
+    public function atributi()
+    {
+        return array_merge([
+            'id' => $this->id,
+        ], $this->atributi);
+    }
+
+    /**
      * Generiše apsolutni put to datoteke u kojoj su podaci.
      * 
      * @return string
