@@ -8,6 +8,14 @@ use Framework\Validator;
 
 class AuthKontroler extends Kontroler
 {
+    public function __construct()
+    {
+        // Isključivo gosti mogu pristupiti metodama ovog kontrolera
+        if (korisnik()) {
+            $this->redirect('/');
+        }
+    }
+
     public function prijavaForma()
     {
         $this->view('prijava');
