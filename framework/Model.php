@@ -245,6 +245,28 @@ abstract class Model
     }
 
     /**
+     * Briše trenutni model iz baze.
+     * 
+     * @return void
+     */
+    public function obrisi()
+    {
+        if (!$this->id) {
+            return;
+        }
+
+        $children = static::dajXml()->sadrzaj->children();
+        for ($i = 0; $i < count($children); $i++) {
+            if ($children[$i]->id == $this->id) {
+                unset($children[$i]);
+                break;
+            }
+        }
+
+        $this->azurirajDatoteku();
+    }
+
+    /**
      * Generiše apsolutni put to datoteke u kojoj su podaci.
      * 
      * @return string
