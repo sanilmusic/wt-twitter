@@ -213,7 +213,9 @@ abstract class Model
         $xml = static::dajXml();
 
         if ($this->id) {
-            $cvor = static::traziCvorove('id', $this->id)[0];
+            $cvor = static::traziCvorove([
+                'id' => $this->id
+            ])[0];
 
             foreach ($this->atributi as $atribut => $vrijednost) {
                 $cvor->$atribut = $vrijednost;
@@ -264,6 +266,17 @@ abstract class Model
         }
 
         $this->azurirajDatoteku();
+    }
+
+    /**
+     * Popuni atribute na osnovu niza.
+     * 
+     * @param  array $atributi
+     * @return void
+     */
+    public function popuni(array $atributi)
+    {
+        $this->atributi = array_merge($this->atributi, $atributi);
     }
 
     /**
