@@ -23,7 +23,18 @@ abstract class Kontroler
         $data['fGreske'] = new Greske(array_key_exists('fGreske', $_SESSION) ? $_SESSION['fGreske'] : []);
 
         // Automatski uključi ranije unesene vrijednosti u formu
-        $data['fData'] = new Unosi(array_key_exists('fData', $_SESSION) ? $_SESSION['fData'] : []);
+        $unosi = [];
+        if (array_key_exists('sacuvano', $data)) {
+            $unosi = $data['sacuvano'];
+            unset($data['sacuvano']);
+        }
+
+        // Raniji unosi prepisuju preko sačuvanih unosa
+        if (array_key_exists('fData', $_SESSION)) {
+            $unosi = array_merge($unosi, $_SESSION['fData']);
+        }
+
+        $data['fData'] = new Unosi($unosi);
 
         view($lok, $data);
     }
