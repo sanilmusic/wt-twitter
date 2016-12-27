@@ -87,6 +87,16 @@ class Validator
     }
 
     /**
+     * Vraća niz ulaza koji su validirani.
+     * 
+     * @return array
+     */
+    public function dajUnose()
+    {
+        return $this->input;
+    }
+
+    /**
      * Omogućava i ručnu registraciju grešaka.
      * 
      * @param  string $polje
@@ -111,7 +121,13 @@ class Validator
         // Izdvoji ključ i ostavi atribute u istom nizu
         $kljuc = array_shift($dijelovi);
 
-        return [$kljuc, $dijelovi];
+        $atributi = [];
+        if (count($dijelovi) == 1) {
+            // Proslijeđeni su i atributi
+            $atributi = explode(',', $dijelovi[0]);
+        }
+
+        return [$kljuc, $atributi];
     }
 
     /**
@@ -227,7 +243,7 @@ class Validator
             $polje => $unos
         ];
 
-        $modeli = call_user_func_array([$klasa, 'dajPrvog'], [$uslovi]);
+        $modeli = call_user_func_array([$klasa, 'trazi'], [$uslovi]);
         
         if (isset($atributi[1])) {
             foreach ($modeli as $model) {
