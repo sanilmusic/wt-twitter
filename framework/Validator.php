@@ -140,7 +140,7 @@ class Validator
                 break;
 
             case 'jedinstveno':
-                return $this->validirajJedinstveno($polje, $unos, $atributi[0]);
+                return $this->validirajJedinstveno($polje, $unos, $atributi);
                 break;
 
             case 'potvrdjeno':
@@ -217,17 +217,26 @@ class Validator
      *
      * @param  string $polje
      * @param  string $unos
-     * @param  string $model
+     * @param  array $model
      * @return bool
      */
-    private function validirajJedinstveno($polje, $unos, $model)
+    private function validirajJedinstveno($polje, $unos, array $atributi)
     {
-        $klasa = '\\App\\Models\\' . $model;
+        $klasa = '\\App\\Models\\' . $atributi[0];
         $uslovi = [
             $polje => $unos
         ];
 
         $modeli = call_user_func_array([$klasa, 'dajPrvog'], [$uslovi]);
+        
+        if (isset($atributi[1])) {
+            foreach ($modeli as $model) {
+                if ($model->id != $atributi[1]) {
+                    return false;
+                }
+            }
+            return true;
+        }
 
         return (count($modeli) == 0);
     }
