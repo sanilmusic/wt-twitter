@@ -88,6 +88,26 @@ input, textarea {
     border-radius: 5px;
 }
 
+a {
+    color: #ac9fbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover {
+    color: #ddbdd5;
+}
+
+a.button {
+    font-size: 0.8em;
+    margin-right: 0.2em;
+}
+
+a.button:last-child {
+    margin-right: 0;
+}
+
+a.button,
 button {
     color: #000;
     background-color: #f7ebec;
@@ -100,21 +120,12 @@ button {
     cursor: pointer;
 }
 
+a.button:hover,
 button:hover,
 button:focus,
 button:active {
     background-color: #ddbdd5;
     border-color: #ac9fbb; 
-}
-
-a {
-    color: #ac9fbb;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-a:hover {
-    color: #ddbdd5;
 }
 
 .left {
@@ -542,4 +553,61 @@ p.kratak-opis {
 
 .moja-slika {
     width: 100%;
+}
+
+.admin-meni {
+    text-align: center;
+}
+
+.admin-meni ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.admin-meni ul li {
+    display: inline;
+    padding: 5px 15px;
+    background-color: #1d1e2c;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.admin-meni ul li:last-child {
+    margin-right: 0;
+}
+
+table th {
+    text-align: left;
+}
+
+table td {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.admin-korisnici {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.admin-korisnici .id {
+    width: 5%;
+}
+
+.admin-korisnici .ime,
+.admin-korisnici .prezime {
+    width: 20%;
+}
+
+.admin-korisnici .email {
+    width: 35%;
+}
+
+.admin-korisnici .akcije {
+    width: 20%;
+}
+
+.uspjeh {
+    color: green;
 }

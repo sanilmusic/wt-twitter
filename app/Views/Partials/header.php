@@ -46,6 +46,14 @@
                                 <?= e(korisnik()->ime) ?>
                             </a>
                             <ul>
+                                <?php if (korisnik()->admin()): ?>
+                                    <li>
+                                        <a href="index.php?sta=admin/korisnici">
+                                            <i class="fa fa-lock"></i>
+                                            Admin
+                                        </a>
+                                    </li>
+                                <?php endif ?>
                                 <li>
                                     <a href="index.php?sta=nalog">
                                         <i class="fa fa-cogs"></i>
