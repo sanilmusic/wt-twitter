@@ -21,6 +21,17 @@ class Unosi
     }
 
     /**
+     * Provjeri da li neki ključ postoji u ranijim unosima.
+     * 
+     * @param  string $kljuc
+     * @return bool
+     */
+    public function ima($kljuc)
+    {
+        return array_key_exists($kljuc, $this->unosi);
+    }
+
+    /**
      * Vrati vrijednost iz liste ranijih unosa.
      * 
      * @param  string $kljuc
