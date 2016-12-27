@@ -1,4 +1,4 @@
-<?php view('Partials/header', ['akcija' => 'index']) ?>
+<?php view('Partials/header', ['akcija' => (korisnik() ? 'indexPrijavljen' : 'indexOdjavljen')]) ?>
 <?php if (!korisnik()): ?>
     <div class="kontejner">
         <div class="red">

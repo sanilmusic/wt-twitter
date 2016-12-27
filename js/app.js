@@ -37,7 +37,7 @@ TWITTER = {
             });
         }
     },
-    index: function() {
+    indexOdjavljen: function() {
         var forma = document.getElementById('novi-nalog-forma');
 
         forma.addEventListener('submit', function(e) {
