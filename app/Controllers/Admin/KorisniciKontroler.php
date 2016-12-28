@@ -2,6 +2,8 @@
 
 namespace App\Controllers\Admin;
 
+use App\Report;
+use App\Models\Poruka;
 use App\Models\Korisnik;
 use Framework\Validator;
 use App\Controllers\Admin\AdminKontroler;
@@ -32,7 +34,9 @@ class KorisniciKontroler extends AdminKontroler
     }
 
     public function pdf()
-    {}
+    {
+        (new Report)->Generate()->Output();
+    }
 
     public function novi()
     {

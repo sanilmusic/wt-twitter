@@ -145,6 +145,16 @@ abstract class Model
     }
 
     /**
+     * Vraća broj modela sačuvanih u bazi.
+     * 
+     * @return int
+     */
+    public static function broj()
+    {
+        return count(static::dajXml()->sadrzaj->children());
+    }
+
+    /**
      * Kreira novi model na osnovu čvora koji je već spremeljen u bazu.
      * 
      * @param  \SimpleXMLElement $cvor

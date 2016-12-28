@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Framework\Model;
+use App\Models\Poruka;
 
 class Korisnik extends Model
 {
@@ -31,5 +32,17 @@ class Korisnik extends Model
     public function dajPunoIme()
     {
         return $this->ime . ' ' . $this->prezime;
+    }
+
+    /**
+     * Vraća niz poruka koje je korisnik ostavio.
+     * 
+     * @return array
+     */
+    public function dajPoruke()
+    {
+        return Poruka::trazi([
+            'korisnik' => $this->id
+        ]);
     }
 }
