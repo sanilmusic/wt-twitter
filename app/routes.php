@@ -15,16 +15,16 @@ $router->get('odjava', 'AuthKontroler@odjava');
 
 $router->post('registracija', 'AuthKontroler@registracija');
 
-$router->get('admin/korisnici', 'AdminKontroler@korisnici');
-$router->get('admin/korisnici/export/csv', 'AdminKontroler@csv');
-$router->get('admin/korisnici/export/pdf', 'AdminKontroler@pdf');
-$router->get('admin/korisnici/novi', 'AdminKontroler@noviKorisnik');
-$router->get('admin/korisnici/izmjena', 'AdminKontroler@izmjenaKorisnika');
-$router->post('admin/korisnici/sacuvaj', 'AdminKontroler@sacuvajKorisnika');
-$router->get('admin/korisnici/obrisi', 'AdminKontroler@obrisiKorisnika');
+$router->get('admin/korisnici', 'Admin\KorisniciKontroler@index');
+$router->get('admin/korisnici/export/csv', 'Admin\KorisniciKontroler@csv');
+$router->get('admin/korisnici/export/pdf', 'Admin\KorisniciKontroler@pdf');
+$router->get('admin/korisnici/novi', 'Admin\KorisniciKontroler@novi');
+$router->get('admin/korisnici/izmjena', 'Admin\KorisniciKontroler@izmjena');
+$router->post('admin/korisnici/sacuvaj', 'Admin\KorisniciKontroler@sacuvaj');
+$router->get('admin/korisnici/obrisi', 'Admin\KorisniciKontroler@obrisi');
 
-$router->get('admin/poruke', 'AdminKontroler@poruke');
-$router->get('admin/poruke/nova', 'AdminKontroler@novaPoruka');
-$router->get('admin/poruke/izmjena', 'AdminKontroler@izmjenaPoruke');
-$router->post('admin/poruke/sacuvaj', 'AdminKontroler@sacuvajPoruku');
-$router->get('admin/poruke/obrisi', 'AdminKontroler@obrisiPoruku');
+$router->get('admin/poruke', 'Admin\PorukeKontroler@index');
+$router->get('admin/poruke/nova', 'Admin\PorukeKontroler@nova');
+$router->get('admin/poruke/izmjena', 'Admin\PorukeKontroler@izmjena');
+$router->post('admin/poruke/sacuvaj', 'Admin\PorukeKontroler@sacuvaj');
+$router->get('admin/poruke/obrisi', 'Admin\PorukeKontroler@obrisi');
