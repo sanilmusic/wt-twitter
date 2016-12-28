@@ -22,4 +22,14 @@ class Korisnik extends Model
     {
         return ($this->admin == 1);
     }
+
+    /**
+     * Vraća spojeno ime i prezime.
+     * 
+     * @return string
+     */
+    public function dajPunoIme()
+    {
+        return $this->ime . ' ' . $this->prezime;
+    }
 }

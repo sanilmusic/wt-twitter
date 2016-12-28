@@ -22,3 +22,9 @@ $router->get('admin/korisnici/novi', 'AdminKontroler@noviKorisnik');
 $router->get('admin/korisnici/izmjena', 'AdminKontroler@izmjenaKorisnika');
 $router->post('admin/korisnici/sacuvaj', 'AdminKontroler@sacuvajKorisnika');
 $router->get('admin/korisnici/obrisi', 'AdminKontroler@obrisiKorisnika');
+
+$router->get('admin/poruke', 'AdminKontroler@poruke');
+$router->get('admin/poruke/nova', 'AdminKontroler@novaPoruka');
+$router->get('admin/poruke/izmjena', 'AdminKontroler@izmjenaPoruke');
+$router->post('admin/poruke/sacuvaj', 'AdminKontroler@sacuvajPoruku');
+$router->get('admin/poruke/obrisi', 'AdminKontroler@obrisiPoruku');

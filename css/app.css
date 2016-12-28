@@ -445,6 +445,7 @@ header.prijavljen .meni ul li ul li {
 }
 
 .forma-max input,
+.forma-max select,
 .forma-max button,
 .forma-max textarea {
     width: 100%;
@@ -586,7 +587,8 @@ table td {
     padding-bottom: 0.5em;
 }
 
-.admin-korisnici {
+.admin-korisnici,
+.admin-poruke {
     width: 100%;
     margin-top: 15px;
 }
@@ -605,6 +607,22 @@ table td {
 }
 
 .admin-korisnici .akcije {
+    width: 20%;
+}
+
+.admin-poruke .id {
+    width: 5%;
+}
+
+.admin-poruke .korisnik {
+    width: 20%;
+}
+
+.admin-poruke .tekst {
+    width: 55%;
+}
+
+.admin-poruke .akcije {
     width: 20%;
 }
 

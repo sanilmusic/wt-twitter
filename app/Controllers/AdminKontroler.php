@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Poruka;
 use App\Models\Korisnik;
 use Framework\Kontroler;
 use Framework\Validator;
@@ -112,9 +113,94 @@ class AdminKontroler extends Kontroler
         $this->redirect('admin/korisnici');
     }
 
+    public function poruke()
+    {
+        $this->view('poruke', [
+            'poruke' => Poruka::sve(),
+            'dodatnaPoruka' => $this->sesija('porukePoruka')
+        ]);
+    }
+
+    public function novaPoruka()
+    {
+        $this->view('porukaForma', [
+            'korisnici' => Korisnik::sve()
+        ]);
+    }
+
+    public function izmjenaPoruke()
+    {
+        $poruka = $this->traziPoruku();
+
+        if (!$poruka) {
+            $this->redirect('admin/poruke');
+        }
+
+        $this->view('porukaForma', [
+            'korisnici' => Korisnik::sve(),
+            'sacuvano' => $poruka->atributi()
+        ]);
+    }
+
+    public function sacuvajPoruku()
+    {
+        $id = $this->post('id');
+        $poruka = Poruka::dajPrvog([
+            'id' => $id
+        ]);
+
+        if ($id && !$poruka) {
+            $this->redirect('/admin/poruke');
+        }
+
+        $input = $this->post(['korisnik', 'tekst']);
+
+        $validator = new Validator($input, [
+            'korisnik' => 'potrebno|postoji:Korisnik',
+            'tekst' => 'potrebno'
+        ]);
+
+        $back = 'admin/poruke/' . ($id ? 'izmjena&id=' . $id : 'novi');
+
+        if (!$validator->validiraj()) {
+            $this->redirect($back, $validator);
+        }
+
+        if ($poruka) {
+            $poruka->popuni($input);
+            $rez = 'Promjene su sačuvane.';
+        } else {
+            $poruka = new Poruka($input);
+            $rez = 'Nova poruka je kreirana.';
+        }
+        $poruka->sacuvaj();
+
+        $_SESSION['noveJednokratne']['porukePoruka'] = $rez;
+        $this->redirect('admin/poruke');
+    }
+
+    public function obrisiPoruku()
+    {
+        $poruka = $this->traziPoruku();
+
+        if ($poruka) {
+            $poruka->obrisi();
+        }
+
+        $_SESSION['noveJednokratne']['porukePoruka'] = 'Poruka je pobrisana.';
+        $this->redirect('admin/poruke');
+    }
+
     private function traziKorisnika()
     {
         return Korisnik::dajPrvog([
+            'id' => $this->get('id')
+        ]);
+    }
+
+    private function traziPoruku()
+    {
+        return Poruka::dajPrvog([
             'id' => $this->get('id')
         ]);
     }
