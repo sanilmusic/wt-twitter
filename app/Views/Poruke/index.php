@@ -20,7 +20,7 @@
                     <tr>
                         <td><?= $poruke->id ?></td>
                         <td><?= e($poruke->dajImeKorisnika()) ?></td>
-                        <td><?= e($poruke->dajSkracenTekst()) ?></td>
+                        <td><?= e($poruke->dajSkracenTekst()) ?>...</td>
                         <td>
                             <a href="index.php?sta=admin/poruke/izmjena&id=<?= $poruke->id ?>" class="button">
                                 <i class="fa fa-pencil"></i>
