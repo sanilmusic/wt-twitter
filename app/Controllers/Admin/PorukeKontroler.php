@@ -67,6 +67,7 @@ class PorukeKontroler extends AdminKontroler
             $rez = 'Promjene su sačuvane.';
         } else {
             $poruka = new Poruka($input);
+            $poruka->kad = microtime(true);
             $rez = 'Nova poruka je kreirana.';
         }
         $poruka->sacuvaj();
