@@ -4,7 +4,7 @@
     <div class="red">
         <form method="post" action="index.php?sta=admin/poruke/sacuvaj" class="forma-max">
             <?php if ($fData->ima('id')): ?>
-                <input type="hidden" name="id" value="<?= $fData->daj('id') ?>">
+                <input type="hidden" name="id" value="<?= e($fData->daj('id')) ?>">
             <?php endif ?>
             <div class="red <?= ($fGreske->ima('korisnik') ? 'neispravan' : '') ?>">
                 <label for="korisnik" class="kolona kolona-1">Korisnik</label>

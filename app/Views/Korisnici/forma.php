@@ -4,26 +4,26 @@
     <div class="red">
         <form method="post" action="index.php?sta=admin/korisnici/sacuvaj" class="forma-max">
             <?php if ($fData->ima('id')): ?>
-                <input type="hidden" name="id" value="<?= $fData->daj('id') ?>">
+                <input type="hidden" name="id" value="<?= e($fData->daj('id')) ?>">
             <?php endif ?>
             <div class="red <?= ($fGreske->ima('ime') ? 'neispravan' : '') ?>">
                 <label for="ime" class="kolona kolona-1">Ime</label>
                 <div class="kolona kolona-5">
-                    <input type="text" name="ime" id="ime" value="<?= $fData->daj('ime') ?>">
+                    <input type="text" name="ime" id="ime" value="<?= e($fData->daj('ime')) ?>">
                     <?= $fGreske->formatiranaGreska('ime') ?>
                 </div>
             </div>
             <div class="red <?= ($fGreske->ima('prezime') ? 'neispravan' : '') ?>">
                 <label for="prezime" class="kolona kolona-1">Prezime</label>
                 <div class="kolona kolona-5">
-                    <input type="text" name="prezime" id="prezime" value="<?= $fData->daj('prezime') ?>">
+                    <input type="text" name="prezime" id="prezime" value="<?= e($fData->daj('prezime')) ?>">
                     <?= $fGreske->formatiranaGreska('prezime') ?>
                 </div>
             </div>
             <div class="red <?= ($fGreske->ima('email') ? 'neispravan' : '') ?>">
                 <label for="email" class="kolona kolona-1">Email adresa</label>
                 <div class="kolona kolona-5">
-                    <input type="text" name="email" id="email" value="<?= $fData->daj('email') ?>">
+                    <input type="text" name="email" id="email" value="<?= e($fData->daj('email')) ?>">
                     <?= $fGreske->formatiranaGreska('email') ?>
                 </div>
             </div>

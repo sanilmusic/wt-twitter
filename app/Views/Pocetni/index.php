@@ -11,21 +11,21 @@
                     <div class="red <?= ($fGreske->ima('ime') ? 'neispravan' : '') ?>">
                         <label for="ime" class="kolona kolona-2">Ime</label>
                         <div class="kolona kolona-4">
-                            <input type="text" name="ime" id="ime" value="<?= $fData->daj('ime') ?>">
+                            <input type="text" name="ime" id="ime" value="<?= e($fData->daj('ime')) ?>">
                             <?= $fGreske->formatiranaGreska('ime') ?>
                         </div>
                     </div>
                     <div class="red <?= ($fGreske->ima('prezime') ? 'neispravan' : '') ?>">
                         <label for="prezime" class="kolona kolona-2">Prezime</label>
                         <div class="kolona kolona-4">
-                            <input type="text" name="prezime" id="prezime" value="<?= $fData->daj('prezime') ?>">
+                            <input type="text" name="prezime" id="prezime" value="<?= e($fData->daj('prezime')) ?>">
                             <?= $fGreske->formatiranaGreska('prezime') ?>
                         </div>
                     </div>
                     <div class="red <?= ($fGreske->ima('email') ? 'neispravan' : '') ?>">
                         <label for="email" class="kolona kolona-2">Email adresa</label>
                         <div class="kolona kolona-4">
-                            <input type="text" name="email" id="email" value="<?= $fData->daj('email') ?>">
+                            <input type="text" name="email" id="email" value="<?= e($fData->daj('email')) ?>">
                             <?= $fGreske->formatiranaGreska('email') ?>
                         </div>
                     </div>
