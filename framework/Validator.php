@@ -112,7 +112,13 @@ class Validator
         // Izdvoji ključ i ostavi atribute u istom nizu
         $kljuc = array_shift($dijelovi);
 
-        return [$kljuc, $dijelovi];
+        // Neka pravila validacije zahtijevaju i atribute
+        $atributi = [];
+        if (count($dijelovi) == 1) {
+            $atributi = explode(',', $dijelovi[0]);
+        }
+
+        return [$kljuc, $atributi];
     }
 
     /**
