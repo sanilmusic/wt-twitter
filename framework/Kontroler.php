@@ -108,7 +108,6 @@ abstract class Kontroler
     {
         if ($dodatno instanceof Validator) {
             $_SESSION['noveJednokratne']['fGreske'] = $dodatno->dajGreske();
-            $_SESSION['noveJednokratne']['fData'] = $dodatno->dajUnose();
         }
 
         if ($ruta == '/') {
