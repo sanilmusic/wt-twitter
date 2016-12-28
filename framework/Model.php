@@ -181,7 +181,7 @@ abstract class Model
      * @param  array $uslovi
      * @return array
      */
-    protected function traziCvorove($uslovi)
+    protected static function traziCvorove($uslovi)
     {
         $xml = static::dajXml();
 
