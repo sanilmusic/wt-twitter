@@ -14,7 +14,8 @@ class Validator
         'email' => 'Unos nije ispravna email adresa.',
         'min' => 'Unos mora biti dug barem :atribut-0 znakova.',
         'jedinstveno' => 'Unos već postoji.',
-        'potvrdjeno' => 'Unesena vrijednost se ne poklapa sa potvrdom.'
+        'potvrdjeno' => 'Unesena vrijednost se ne poklapa sa potvrdom.',
+        'postoji' => 'Odabrani unos ne postoji.'
     ];
 
     /**
@@ -162,6 +163,10 @@ class Validator
             case 'potvrdjeno':
                 return $this->validirajPotvrdjeno($unos, $atributi[0]);
                 break;
+
+            case 'postoji':
+                return $this->validirajPostoji($unos, $atributi[0]);
+                break;
         }
     }
 
@@ -238,12 +243,7 @@ class Validator
      */
     private function validirajJedinstveno($polje, $unos, array $atributi)
     {
-        $klasa = '\\App\\Models\\' . $atributi[0];
-        $uslovi = [
-            $polje => $unos
-        ];
-
-        $modeli = call_user_func_array([$klasa, 'trazi'], [$uslovi]);
+        $modeli = $this->traziModele($atributi[0], $polje, $unos);
         
         if (isset($atributi[1])) {
             foreach ($modeli as $model) {
@@ -267,5 +267,37 @@ class Validator
     private function validirajPotvrdjeno($unos, $poljePotvrde)
     {
         return ($unos == $this->input($poljePotvrde));
+    }
+
+    /**
+     * Validiraj da model sa odgovarajućim ID-om postoji.
+     * 
+     * @param  string $unos
+     * @param  string $model
+     * @return bool
+     */
+    private function validirajPostoji($unos, $model)
+    {
+        $modeli = $this->traziModele($model, 'id', $unos);
+
+        return (count($modeli) == 1);
+    }
+
+    /**
+     * Vraća sve modele nekog tipa kod kojeg neko polje ima neku vrijednost.
+     * 
+     * @param  string $model
+     * @param  string $polje
+     * @param  string $vrijednost
+     * @return \Framework\Model
+     */
+    private function traziModele($model, $polje, $vrijednost)
+    {
+        $klasa = '\\App\\Models\\' . $model;
+        $uslovi = [
+            $polje => $vrijednost
+        ];
+
+        return call_user_func_array([$klasa, 'trazi'], [$uslovi]);
     }
 }
