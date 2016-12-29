@@ -8,9 +8,8 @@ use Framework\Validator;
 
 class AuthKontroler extends Kontroler
 {
-    public function __construct()
+    protected function daLiJeOdjavljen()
     {
-        // Isključivo gosti mogu pristupiti metodama ovog kontrolera
         if (korisnik()) {
             $this->redirect('/');
         }
@@ -18,11 +17,15 @@ class AuthKontroler extends Kontroler
 
     public function prijavaForma()
     {
+        $this->daLiJeOdjavljen();
+
         $this->view('prijava');
     }
 
     public function prijava()
     {
+        $this->daLiJeOdjavljen();
+
         $input = $this->post(['email', 'lozinka']);
 
         // Validiraj ulaz
@@ -63,6 +66,8 @@ class AuthKontroler extends Kontroler
 
     public function registracija()
     {
+        $this->daLiJeOdjavljen();
+
         $input = $this->post(['ime', 'prezime', 'email', 'lozinka', 'potvrda_lozinke']);
 
         $validator = new Validator($input, [
