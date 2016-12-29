@@ -41,9 +41,7 @@ class PorukeKontroler extends AdminKontroler
     public function sacuvaj()
     {
         $id = $this->post('id');
-        $poruka = Poruka::dajPrvog([
-            'id' => $id
-        ]);
+        $poruka = Poruka::query()->gdje('id', $id)->prvi();
 
         if ($id && !$poruka) {
             $this->redirect('/admin/poruke');
@@ -90,8 +88,6 @@ class PorukeKontroler extends AdminKontroler
 
     private function traziPoruku()
     {
-        return Poruka::dajPrvog([
-            'id' => $this->get('id')
-        ]);
+        return Poruka::query()->gdje('id', $this->get('id'))->prvi();
     }
 }

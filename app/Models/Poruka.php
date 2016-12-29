@@ -20,9 +20,7 @@ class Poruka extends Model
      */
     public function dajImeKorisnika()
     {
-        return Korisnik::dajPrvog([
-            'id' => $this->korisnik
-        ])->ime;
+        return Korisnik::query()->gdje('id', $this->korisnik)->prvi()->ime;
     }
 
     /**

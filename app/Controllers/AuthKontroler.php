@@ -39,9 +39,7 @@ class AuthKontroler extends Kontroler
         }
 
         // Provjeri da li korisnik postoji
-        $korisnik = Korisnik::dajPrvog([
-            'email' => $input['email']
-        ]);
+        $korisnik = Korisnik::query()->gdje('email', $input['email'])->prvi();
 
         if (!$korisnik) {
             $validator->registrujGresku('email', 'Korisnik nije pronađen.');

@@ -41,8 +41,6 @@ class Korisnik extends Model
      */
     public function dajPoruke()
     {
-        return Poruka::trazi([
-            'korisnik' => $this->id
-        ]);
+        return Poruka::query()->gdje('korisnik', $this->id)->sve();
     }
 }

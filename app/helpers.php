@@ -46,7 +46,7 @@ function korisnik()
         return null;
     }
 
-    $korisnik = Korisnik::traziId($_SESSION['userId']);
+    $korisnik = Korisnik::query()->gdje('id', $_SESSION['userId'])->prvi();
 
     return $korisnik;
 }

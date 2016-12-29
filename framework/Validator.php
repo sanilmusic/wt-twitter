@@ -284,10 +284,7 @@ class Validator
     private function traziModele($model, $polje, $vrijednost)
     {
         $klasa = '\\App\\Models\\' . $model;
-        $uslovi = [
-            $polje => $vrijednost
-        ];
 
-        return call_user_func_array([$klasa, 'trazi'], [$uslovi]);
+        return call_user_func_array([$klasa, 'query'], [])->gdje($polje, $vrijednost)->sve();
     }
 }

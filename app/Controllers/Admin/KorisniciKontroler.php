@@ -59,9 +59,7 @@ class KorisniciKontroler extends AdminKontroler
     public function sacuvaj()
     {
         $id = $this->post('id');
-        $korisnik = Korisnik::dajPrvog([
-            'id' => $id
-        ]);
+        $korisnik = Korisnik::query()->gdje('id', $id)->prvi();
 
         if ($id && !$korisnik) {
             $this->redirect('/');
@@ -111,8 +109,6 @@ class KorisniciKontroler extends AdminKontroler
 
     private function traziKorisnika()
     {
-        return Korisnik::dajPrvog([
-            'id' => $this->get('id')
-        ]);
+        return Korisnik::query()->gdje('id', $this->get('id'))->prvi();
     }
 }

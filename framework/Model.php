@@ -2,6 +2,7 @@
 
 namespace Framework;
 
+use Framework\Query;
 use SimpleXMLElement;
 
 abstract class Model
@@ -90,68 +91,13 @@ abstract class Model
     }
 
     /**
-     * Vraća modele koji zadovoljavaju definisane uslove.
+     * Vraća novu Query instancu preko koje se mogu ispitivati uslovi.
      * 
-     * @param  array $uslovi
-     * @return void
+     * @return \Framework\Query
      */
-    public static function trazi($uslovi)
+    public static function query()
     {
-        $rezultati = [];
-
-        $cvorovi = static::traziCvorove($uslovi);
-        foreach ($cvorovi as $cvor) {
-            $rezultati[] = static::kreirajIzCvora($cvor);
-        }
-
-        return $rezultati;
-    }
-
-    /**
-     * Vraća model sa definisanim ID-om.
-     * 
-     * @param  int $id
-     * @return \App\Model
-     */
-    public static function traziId($id)
-    {
-        $rezultati = static::trazi([
-            'id' => $id
-        ]);
-
-        if (empty($rezultati)) {
-            return null;
-        }
-
-        return $rezultati[0];
-    }
-
-    /**
-     * Vraća prvog korisnika koji zadovoljava uslove.
-     * 
-     * @param  array $uslovi
-     * @param  mixed $default
-     * @return mixed
-     */
-    public static function dajPrvog($uslovi, $default = null)
-    {
-        $rezultati = static::trazi($uslovi);
-
-        if (empty($rezultati)) {
-            return $default;
-        }
-
-        return $rezultati[0];
-    }
-
-    /**
-     * Vraća broj modela sačuvanih u bazi.
-     * 
-     * @return int
-     */
-    public static function broj()
-    {
-        return count(static::dajXml()->sadrzaj->children());
+        return new Query(static::sve());
     }
 
     /**
