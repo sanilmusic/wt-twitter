@@ -15,6 +15,8 @@ $router->get('odjava', 'AuthKontroler@odjava');
 
 $router->post('registracija', 'AuthKontroler@registracija');
 
+$router->get('pretraga', 'PretragaKontroler@pretraga');
+
 $router->get('admin/korisnici', 'Admin\KorisniciKontroler@index');
 $router->get('admin/korisnici/export/csv', 'Admin\KorisniciKontroler@csv');
 $router->get('admin/korisnici/export/pdf', 'Admin\KorisniciKontroler@pdf');

@@ -629,3 +629,38 @@ table td {
 .uspjeh {
     color: green;
 }
+
+header .pretraga ul {
+    list-style: none;
+    padding: 0 7px;
+    margin: 0;
+    position: absolute;
+    right: 77px;
+    top: 53px;
+    background-color: #f7ebec;
+    width: 166px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+header .pretraga ul li {
+    padding: 7px 0;
+    margin: 0;
+    text-align: left;
+    border-bottom: 1px solid #3e405b;
+    line-height: normal;
+    font-size: 0.9em;
+}
+
+header .pretraga ul li:last-child {
+    border-bottom: 0;
+}
+
+header .pretraga ul li a {
+    color: #3e405b;
+}
+
+header .pretraga ul li a:hover {
+    color: #5d618c;
+}

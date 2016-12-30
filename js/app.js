@@ -36,6 +36,40 @@ TWITTER = {
                 meni.style.display = (meni.style.display === 'block' ? 'none' : 'block');
             });
         }
+
+        // Pretraga korisnika
+        var pretraga = document.getElementById('pretraga-korisnika'),
+            prijedlozi = document.getElementById('pretraga-prijedlozi');
+
+        if (pretraga) {
+            var prethodnaDuzina = 0;
+            pretraga.addEventListener('keyup', function() {
+                if (pretraga.value.length !== prethodnaDuzina) {
+                    prethodnaDuzina = pretraga.value.length;
+                    ajaxRequest('GET', 'index.php?sta=pretraga&q=' + encodeURI(pretraga.value), function(json) {
+                        var rezultati = JSON.parse(json);
+
+                        // Pobrisi postojece sugestije
+                        prijedlozi.innerHTML = '';
+
+                        // Dodaj nove
+                        for (var i = 0; i < rezultati.length; i++) {
+                            prijedlozi.innerHTML += '<li><a href="#"><i class="fa fa-user"> ' + rezultati[i].tekst + '</i></a></li>';
+                        }
+
+                        if (rezultati.length > 0) {
+                            ukloniKlasu(prijedlozi, 'skriven');
+                        } else {
+                            dodajKlasu(prijedlozi, 'skriven');
+                        }
+                    });
+                }
+
+                pretraga.addEventListener('blur', function() {
+                    dodajKlasu(prijedlozi, 'skriven');
+                });
+            });
+        }
     },
     indexOdjavljen: function() {
         var forma = document.getElementById('novi-nalog-forma');

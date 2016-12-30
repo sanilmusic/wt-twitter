@@ -75,7 +75,8 @@
                 </div>
                 <div class="pretraga">
                     <form action="#" method="post">
-                        <input type="text" name="sta" placeholder="Traži...">
+                        <input type="text" name="sta" id="pretraga-korisnika" placeholder="Traži...">
+                        <ul class="skriven" id="pretraga-prijedlozi"></ul>
                         <button type="submit">Traži</button>
                     </form>
                 </div>
