@@ -53,8 +53,7 @@
             <div class="kolona kolona-2 strana">
                 <div class="prijavljeni-korisnik">
                     <img class="moja-slika" src="images/user.png" alt="Korisnik">
-                    <h1 class="ime-prezime">Ime Prezime</h1>
-                    <span class="korisnicko-ime">korisnik</span>
+                    <h1 class="ime-prezime"><?= e(korisnik()->dajPunoIme()) ?></h1>
                 </div>
                 <div class="trendovi">
                     <h3>O čemu se piše?</h3>
