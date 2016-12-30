@@ -46,7 +46,7 @@ TWITTER = {
             pretraga.addEventListener('keyup', function() {
                 if (pretraga.value.length !== prethodnaDuzina) {
                     prethodnaDuzina = pretraga.value.length;
-                    ajaxRequest('GET', 'index.php?sta=pretraga&q=' + encodeURI(pretraga.value), function(json) {
+                    ajaxRequest('GET', 'index.php?sta=pretraga/ajax&q=' + encodeURI(pretraga.value), function(json) {
                         var rezultati = JSON.parse(json);
 
                         // Pobrisi postojece sugestije

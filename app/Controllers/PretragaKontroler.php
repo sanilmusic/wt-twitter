@@ -16,14 +16,14 @@ class PretragaKontroler extends Kontroler
 
     public function pretraga()
     {
-        $q = $this->get('q');
+        $this->view('index', [
+            'rez' => array_chunk($this->trazi(), 2)
+        ]);
+    }
 
-        if (empty($q)) {
-            echo '[]';
-            return;
-        }
-
-        $rez = Korisnik::query()->gdjeSadrzi('ime', $q)->gdjeSadrzi('prezime', $q)->operator('ILI')->sve();
+    public function ajax()
+    {
+        $rez = $this->trazi();
 
         if (count($rez) > 10) {
             // Uzmi 10 rezultata
@@ -39,7 +39,7 @@ class PretragaKontroler extends Kontroler
      * @param  array $rez
      * @return string
      */
-    protected function formatiraj(array $rez)
+    private function formatiraj(array $rez)
     {
         $niz = [];
 
@@ -51,5 +51,21 @@ class PretragaKontroler extends Kontroler
         }
 
         return json_encode($niz);
+    }
+
+    /**
+     * Traži korisnike koji u imenu ili prezimenu imaju specifiricani podstring.
+     * 
+     * @return array
+     */
+    private function trazi()
+    {
+        $q = $this->get('q');
+
+        if (empty($q)) {
+            return [];
+        }
+
+        return Korisnik::query()->gdjeSadrzi('ime', $q)->gdjeSadrzi('prezime', $q)->operator('ILI')->sve();
     }
 }

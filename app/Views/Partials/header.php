@@ -74,8 +74,9 @@
                     <a href="index.php"><img src="images/logo.png" alt="BTC"></a>
                 </div>
                 <div class="pretraga">
-                    <form action="#" method="post">
-                        <input type="text" name="sta" id="pretraga-korisnika" placeholder="Traži...">
+                    <form action="index.php" method="get">
+                        <input type="hidden" name="sta" value="pretraga">
+                        <input type="text" name="q" id="pretraga-korisnika" placeholder="Traži..." autocomplete="off">
                         <ul class="skriven" id="pretraga-prijedlozi"></ul>
                         <button type="submit">Traži</button>
                     </form>
