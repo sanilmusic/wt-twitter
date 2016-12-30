@@ -134,7 +134,7 @@ class Query
      */
     public function broj()
     {
-        return count($this->svi());
+        return count($this->sve());
     }
 
     /**
