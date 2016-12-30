@@ -54,7 +54,7 @@ TWITTER = {
 
                         // Dodaj nove
                         for (var i = 0; i < rezultati.length; i++) {
-                            prijedlozi.innerHTML += '<li><a href="#"><i class="fa fa-user"> ' + rezultati[i].tekst + '</i></a></li>';
+                            prijedlozi.innerHTML += '<li><a href="index.php?sta=profil&id=' + rezultati[i].id + '"><i class="fa fa-user"> ' + rezultati[i].tekst + '</i></a></li>';
                         }
 
                         if (rezultati.length > 0) {
@@ -66,7 +66,9 @@ TWITTER = {
                 }
 
                 pretraga.addEventListener('blur', function() {
-                    dodajKlasu(prijedlozi, 'skriven');
+                    setTimeout(function() {
+                        dodajKlasu(prijedlozi, 'skriven');
+                    }, 100);
                 });
             });
         }
