@@ -4,6 +4,21 @@ Projekat se radi za potrebe kursa "Web tehnologije" na Elektrotehničkom fakulte
 
 Autor: Sanil Musić (16997)
 
+#### Spirala 3
+---
+
+###### Šta je urađeno?
+Svi podaci koji se prikazuju na stranici su spremljeni u XML datoteke. Napravljen je poseban dio stranice za admin korisnike preko kojeg se mogu dodavati, mijenjati i brisati podaci. Sa iste lokacije se također mogu i generisati CSV i PDF datoteke. Svaki prijavljeni korisnik može koristiti polje za pretragu koje se nalazi u vrhu stranice. Prijedlozi se prikazuju bez da se osvježava stranica, a svaki od prijedloga vodi do profila odgovarajućeg korisnika. Konačno, stranica je postavljena na OpenShift platformu.
+
+###### Šta nije urađeno?
+/
+
+###### Bug-ovi
+Nisu uočeni bug-ovi.
+
+###### Deployment
+Stranici se može pristupi preko sljedećeg URL-a: http://default-wt.44fs.preview.openshiftapps.com/.
+
 #### Spirala 2
 ---
 
