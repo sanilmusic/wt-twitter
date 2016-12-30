@@ -57,8 +57,8 @@ class Report extends \FPDF
     protected function Stats()
     {
         $this->SetFont(self::FONT_FACE, 'B', 10);
-        $this->Text(2, $this->GetIncreaseY(20), 'Broj korisnika: ' . Korisnik::broj());
-        $this->Text(2, $this->GetIncreaseY(12), 'Broj poruka: ' . Poruka::broj());
+        $this->Text(2, $this->GetIncreaseY(20), 'Broj korisnika: ' . Korisnik::query()->broj());
+        $this->Text(2, $this->GetIncreaseY(12), 'Broj poruka: ' . Poruka::query()->broj());
         $this->Hr();
     }
 
