@@ -11,8 +11,7 @@
                 <img src="uploads/slika3.png" alt="Slika 3">
                 <img src="uploads/slika4.jpg" alt="Slika 4">
             </div>
-            <h1 class="ime-prezime">Ime Prezime</h1>
-            <span class="korisnicko-ime">korisnik</span>
+            <h1 class="ime-prezime"><?= e($korisnik->dajPunoIme()) ?></h1>
             <p class="kratak-opis">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis vulputate urna, et finibus risus. Donec tristique, augue ac dictum luctus, leo elit tristique augue, nec porttitor quam dui id justo. Sed lacus neque, accumsan in dolor eget, posuere scelerisque orci. Pellentesque nisl turpis, tempor at urna non, pharetra venenatis nunc. Nam velit est, malesuada at ante at, pellentesque tincidunt risus. Suspendisse pulvinar metus quis nibh ultricies, non dictum felis convallis. Integer neque odio, rhoncus ac pharetra sed, sodales sed nibh.
             </p>
@@ -22,7 +21,7 @@
                 <a href="#" class="podatak" data-tab="poruke">
                     <i class="fa fa-comment"></i>
                     Poruke<br>
-                    10
+                    <?= count($poruke) ?>
                 </a>
                 <a href="#" class="podatak" data-tab="prati">
                     <i class="fa fa-check-circle"></i>
@@ -39,11 +38,13 @@
             <div id="tabovi">
                 <div id="tab-poruke">
                     <div class="profil-poruke">
-                        <div class="clearfix poruka">
-                            <div class="balon">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec est justo, fringilla sed ornare quis, consectetur vel odio. Sed purus risus, porta a orci non, elementum accumsan nisi. Duis ultrices aliquet hendrerit. Aliquam erat volutpat.
+                        <?php foreach ($poruke as $poruka): ?>
+                            <div class="clearfix poruka">
+                                <div class="balon">
+                                    <?= e($poruka->tekst) ?>
+                                </div>
                             </div>
-                        </div>
+                        <?php endforeach ?>
                         <div class="clearfix poruka">
                             <div class="balon">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec est justo, fringilla sed ornare quis, consectetur vel odio. Sed purus risus, porta a orci non, elementum accumsan nisi. Duis ultrices aliquet hendrerit. Aliquam erat volutpat.
