@@ -37,9 +37,9 @@ class Poruka extends Model
         $razmakPos = strpos($this->tekst, ' ', 100);
 
         if ($razmakPos !== false) {
-            return substr($this->tekst, 0, $razmakPos);
+            return substr($this->tekst, 0, $razmakPos) . '...';
         }
 
-        return substr($this->tekst, 0, 100);
+        return substr($this->tekst, 0, 100) . '...';
     }
 }
