@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Framework\Model;
+use Framework\Storage\Xml\Model;
 
 class Poruka extends Model
 {

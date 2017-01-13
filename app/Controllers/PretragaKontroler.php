@@ -3,9 +3,9 @@
 namespace App\Controllers;
 
 use App\Models\Korisnik;
-use Framework\Kontroler;
+use Framework\Http\Controller;
 
-class PretragaKontroler extends Kontroler
+class PretragaKontroler extends Controller
 {
     public function __construct()
     {

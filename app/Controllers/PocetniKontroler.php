@@ -3,9 +3,9 @@
 namespace App\Controllers;
 
 use App\Models\Poruka;
-use Framework\Kontroler;
+use Framework\Http\Controller;
 
-class PocetniKontroler extends Kontroler
+class PocetniKontroler extends Controller
 {
     public function index()
     {

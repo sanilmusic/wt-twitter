@@ -2,9 +2,9 @@
 
 namespace App\Controllers;
 
-use Framework\Kontroler;
+use Framework\Http\Controller;
 
-class LozinkaKontroler extends Kontroler
+class LozinkaKontroler extends Controller
 {
     public function forma()
     {

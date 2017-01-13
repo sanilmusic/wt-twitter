@@ -3,9 +3,9 @@
 namespace App\Controllers;
 
 use App\Models\Korisnik;
-use Framework\Kontroler;
+use Framework\Http\Controller;
 
-class ProfilKontroler extends Kontroler
+class ProfilKontroler extends Controller
 {
     public function index()
     {

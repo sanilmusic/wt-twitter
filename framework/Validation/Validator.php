@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework;
+namespace Framework\Validation;
 
 class Validator
 {
@@ -279,7 +279,7 @@ class Validator
      * @param  string $model
      * @param  string $polje
      * @param  string $vrijednost
-     * @return \Framework\Model
+     * @return \Framework\Storage\Xml\Model
      */
     private function traziModele($model, $polje, $vrijednost)
     {

@@ -18,7 +18,7 @@ $loader->register();
 $loader->addNamespace('Framework', PATH . '/framework');
 $loader->addNamespace('App', PATH . '/app');
 
-$router = new \Framework\Router;
+$router = new \Framework\Http\Router;
 
 // Registruj rute
 require PATH . '/app/routes.php';

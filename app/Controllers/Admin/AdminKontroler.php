@@ -2,9 +2,9 @@
 
 namespace App\Controllers\Admin;
 
-use Framework\Kontroler;
+use Framework\Http\Controller;
 
-abstract class AdminKontroler extends Kontroler
+abstract class AdminKontroler extends Controller
 {
     public function __construct()
     {

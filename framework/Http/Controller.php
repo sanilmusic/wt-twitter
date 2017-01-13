@@ -1,12 +1,12 @@
 <?php
 
-namespace Framework;
+namespace Framework\Http;
 
-use Framework\Unosi;
-use Framework\Greske;
-use Framework\Validator;
+use Framework\Bag;
+use Framework\Validation\ErrorBag;
+use \Framework\Validation\Validator;
 
-abstract class Kontroler
+abstract class Controller
 {
     public function __construct()
     {
@@ -20,7 +20,7 @@ abstract class Kontroler
         $lok = $this->dajImeKontrolera() . '/' . $ime;
 
         // Automatski uključi klasu za manipulaciju greškama
-        $data['fGreske'] = new Greske(array_key_exists('fGreske', $_SESSION) ? $_SESSION['fGreske'] : []);
+        $data['fGreske'] = new ErrorBag(array_key_exists('fGreske', $_SESSION) ? $_SESSION['fGreske'] : []);
 
         // Automatski uključi ranije unesene vrijednosti u formu
         $unosi = [];
@@ -34,7 +34,7 @@ abstract class Kontroler
             $unosi = array_merge($unosi, $_SESSION['fData']);
         }
 
-        $data['fData'] = new Unosi($unosi);
+        $data['fData'] = new Bag($unosi);
 
         view($lok, $data);
     }

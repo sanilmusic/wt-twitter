@@ -1,8 +1,8 @@
 <?php
 
-namespace Framework;
+namespace Framework\Storage\Xml;
 
-use Framework\Query;
+use Framework\Storage\Query;
 use SimpleXMLElement;
 
 abstract class Model
@@ -93,7 +93,7 @@ abstract class Model
     /**
      * Vraća novu Query instancu preko koje se mogu ispitivati uslovi.
      * 
-     * @return \Framework\Query
+     * @return \Framework\Storage\Query
      */
     public static function query()
     {
@@ -104,7 +104,7 @@ abstract class Model
      * Kreira novi model na osnovu čvora koji je već spremeljen u bazu.
      * 
      * @param  \SimpleXMLElement $cvor
-     * @return \Framework\Model
+     * @return \Framework\Storage\Xml\Model
      */
     protected static function kreirajIzCvora(SimpleXMLElement $cvor)
     {

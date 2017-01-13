@@ -2,9 +2,9 @@
 
 namespace App\Controllers;
 
-use Framework\Kontroler;
+use Framework\Http\Controller;
 
-class NalogKontroler extends Kontroler
+class NalogKontroler extends Controller
 {
     public function index()
     {

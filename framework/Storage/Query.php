@@ -1,9 +1,9 @@
 <?php
 
-namespace Framework;
+namespace Framework\Storage;
 
 use SimpleXML;
-use Framework\Model;
+use Framework\Storage\Xml\Model;
 
 class Query
 {
@@ -42,7 +42,7 @@ class Query
      * Postavlja vrijednost operatora.
      * 
      * @param  string $operator
-     * @return \Framework\Query
+     * @return \Framework\Storage\Query
      */
     public function operator($operator)
     {
@@ -57,7 +57,7 @@ class Query
      * @param  string $polje
      * @param  string $operator
      * @param  string $vrijednost
-     * @return \Framework\Query
+     * @return \Framework\Storage\Query
      */
     protected function dodajUslov($polje, $operator, $vrijednost)
     {
@@ -71,7 +71,7 @@ class Query
      *
      * @param  string $tip
      * @param  string $vrijednost
-     * @return \Framework\Query
+     * @return \Framework\Storage\Query
      */
     public function gdje($polje, $vrijednost)
     {
@@ -83,7 +83,7 @@ class Query
      * 
      * @param  string $polje
      * @param  string $vrijednost
-     * @return \Framework\Query
+     * @return \Framework\Storage\Query
      */
     public function gdjeSadrzi($polje, $vrijednost)
     {
@@ -114,7 +114,7 @@ class Query
     /**
      * Vraća prvi model koji ispunjava sve uslove.
      * 
-     * @return \Framework\Model
+     * @return \Framework\Storage\Xml\Model
      */
     public function prvi()
     {
@@ -140,7 +140,7 @@ class Query
     /**
      * Provjerava da li model ispunjava zadane uslove.
      * 
-     * @param  \Framework\Model $model
+     * @param  \Framework\Storage\Xml\Model $model
      * @return bool
      */
     protected function ispunjavaUslove(Model $model)
@@ -163,7 +163,7 @@ class Query
     /**
      * Provjeri da li model ispunjava jedan uslov.
      * 
-     * @param  \Framework\Model $model
+     * @param  \Framework\Storage\Xml\Model $model
      * @param  array $uslov
      * @return boool
      */

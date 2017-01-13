@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework;
+namespace Framework\Http;
 
 use Framework\Exceptions\InvalidRouteException;
 
@@ -36,7 +36,7 @@ class Router
      * Kreira instancu kontrolera koji je zadužen za odgovor na zahtjev.
      * 
      * @param  string $kontroler
-     * @return mixed
+     * @return \Framework\Http\Controller
      */
     private function kreirajKontroler($kontroler)
     {

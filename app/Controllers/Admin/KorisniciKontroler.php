@@ -5,7 +5,7 @@ namespace App\Controllers\Admin;
 use App\Report;
 use App\Models\Poruka;
 use App\Models\Korisnik;
-use Framework\Validator;
+use Framework\Validation\Validator;
 use App\Controllers\Admin\AdminKontroler;
 
 class KorisniciKontroler extends AdminKontroler

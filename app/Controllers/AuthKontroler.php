@@ -3,10 +3,10 @@
 namespace App\Controllers;
 
 use App\Models\Korisnik;
-use Framework\Kontroler;
-use Framework\Validator;
+use \Framework\Validation\Validator;
+use Framework\Http\Controller;
 
-class AuthKontroler extends Kontroler
+class AuthKontroler extends Controller
 {
     protected function daLiJeOdjavljen()
     {
