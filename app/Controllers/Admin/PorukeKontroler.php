@@ -61,7 +61,7 @@ class PorukeKontroler extends AdminKontroler
         }
 
         if ($poruka) {
-            $poruka->popuni($input);
+            $poruka->azurirajAtribute($input);
             $rez = 'Promjene su sačuvane.';
         } else {
             $poruka = new Poruka($input);

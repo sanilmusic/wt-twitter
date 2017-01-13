@@ -2,10 +2,11 @@
 
 namespace Framework\Storage\Xml;
 
+use Framework\Storage\Model as BaseModel;
 use Framework\Storage\Query;
 use SimpleXMLElement;
 
-abstract class Model
+abstract class Model extends BaseModel
 {
     /**
      * Naziv datoteke u kojoj se nalazi podaci.
@@ -13,48 +14,6 @@ abstract class Model
      * @var string
      */
     protected static $datoteka;
-
-    /**
-     * Jedinstveni ID trenutnog entiteta.
-     * 
-     * @var int
-     */
-    protected $id;
-
-    /**
-     * Atributi koji opisuju trenutni entitet.
-     * 
-     * @var array
-     */
-    protected $atributi = [];
-
-    /**
-     * Obezbijeđuje mehanizam za direktnu promjenu atributa.
-     * 
-     * @param string $ime
-     * @param string $vrijednost
-     */
-    public function __set($ime, $vrijednost)
-    {
-        $this->atributi[$ime] = $vrijednost;
-    }
-
-    /**
-     * Obezbijeđuje direktan pristup vrijednostima atributa.
-     * 
-     * @param  string $ime
-     * @return mix
-     */
-    public function __get($ime)
-    {
-        if ($ime == 'id') {
-            return $this->id;
-        } elseif (!array_key_exists($ime, $this->atributi)) {
-            return null;
-        }
-
-        return $this->atributi[$ime];
-    }
 
     /**
      * Vraća SimpleXML objekat za interakciju sa XML datotekom. Datoteka se učitava
@@ -88,16 +47,6 @@ abstract class Model
         }
 
         return $stavke;
-    }
-
-    /**
-     * Vraća novu Query instancu preko koje se mogu ispitivati uslovi.
-     * 
-     * @return \Framework\Storage\Query
-     */
-    public static function query()
-    {
-        return new Query(static::sve());
     }
 
     /**
@@ -150,16 +99,6 @@ abstract class Model
     }
 
     /**
-     * Kreiraj novi model entiteta.
-     * 
-     * @param array $atributi
-     */
-    public function __construct($atributi = [])
-    {
-        $this->atributi = $atributi;
-    }
-
-    /**
      * Sačuvaj trenutni model.
      * 
      * @return void
@@ -191,18 +130,6 @@ abstract class Model
     }
 
     /**
-     * Vraća niz svih atributa postavljenih nad modelom.
-     * 
-     * @return array
-     */
-    public function atributi()
-    {
-        return array_merge([
-            'id' => $this->id,
-        ], $this->atributi);
-    }
-
-    /**
      * Briše trenutni model iz baze.
      * 
      * @return void
@@ -222,17 +149,6 @@ abstract class Model
         }
 
         $this->azurirajDatoteku();
-    }
-
-    /**
-     * Popuni atribute na osnovu niza.
-     * 
-     * @param  array $atributi
-     * @return void
-     */
-    public function popuni(array $atributi)
-    {
-        $this->atributi = array_merge($this->atributi, $atributi);
     }
 
     /**

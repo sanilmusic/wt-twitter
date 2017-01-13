@@ -83,7 +83,7 @@ class KorisniciKontroler extends AdminKontroler
         $input['lozinka'] = password_hash($input['lozinka'], PASSWORD_DEFAULT);
 
         if ($korisnik) {
-            $korisnik->popuni($input);
+            $korisnik->azurirajAtribute($input);
             $poruka = 'Promjene su sačuvane.';
         } else {
             $korisnik = new Korisnik($input);

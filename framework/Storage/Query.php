@@ -3,7 +3,7 @@
 namespace Framework\Storage;
 
 use SimpleXML;
-use Framework\Storage\Xml\Model;
+use Framework\Storage\Model;
 
 class Query
 {
