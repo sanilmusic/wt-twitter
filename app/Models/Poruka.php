@@ -2,16 +2,16 @@
 
 namespace App\Models;
 
-use Framework\Storage\Xml\Model;
+use Framework\Storage\Database\Model;
 
 class Poruka extends Model
 {
-    /**
-     * 
+   /**
+     * Naziv tabele u kojoj se nalaze podaci.
      * 
      * @var string
      */
-    protected static $datoteka = 'poruke';
+    public static $tabela = 'poruke';
 
     /**
      * Pronalazi ime korisnika koji je postavio poruku.
@@ -20,7 +20,7 @@ class Poruka extends Model
      */
     public function dajImeKorisnika()
     {
-        return Korisnik::query()->gdje('id', $this->korisnik)->prvi()->ime;
+        return Korisnik::query()->gdje('id', $this->korisnik_id)->prvi()->ime;
     }
 
     /**

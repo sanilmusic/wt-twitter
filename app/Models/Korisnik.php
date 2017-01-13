@@ -2,17 +2,17 @@
 
 namespace App\Models;
 
-use Framework\Storage\Xml\Model;
+use Framework\Storage\Database\Model;
 use App\Models\Poruka;
 
 class Korisnik extends Model
 {
     /**
-     * 
+     * Naziv tabele u kojoj se nalaze podaci.
      * 
      * @var string
      */
-    protected static $datoteka = 'korisnici';
+    public static $tabela = 'korisnici';
 
     /**
      * Da li korisnik ima admin privilegije?
