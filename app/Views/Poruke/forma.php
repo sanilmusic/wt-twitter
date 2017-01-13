@@ -6,10 +6,10 @@
             <?php if ($fData->ima('id')): ?>
                 <input type="hidden" name="id" value="<?= e($fData->daj('id')) ?>">
             <?php endif ?>
-            <div class="red <?= ($fGreske->ima('korisnik') ? 'neispravan' : '') ?>">
+            <div class="red <?= ($fGreske->ima('korisnik_id') ? 'neispravan' : '') ?>">
                 <label for="korisnik" class="kolona kolona-1">Korisnik</label>
                 <div class="kolona kolona-5">
-                    <select name="korisnik" id="korisnik">
+                    <select name="korisnik_id" id="korisnik">
                         <?php foreach ($korisnici as $korisnik): ?>
                             <option value="<?= $korisnik->id ?>" <?= ($korisnik->id == $fData->daj('korisnik') ? 'selected' : '') ?>><?= e($korisnik->dajPunoIme()) ?></option>
                         <?php endforeach ?>

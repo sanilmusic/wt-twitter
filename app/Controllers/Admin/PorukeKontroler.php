@@ -47,10 +47,10 @@ class PorukeKontroler extends AdminKontroler
             $this->redirect('/admin/poruke');
         }
 
-        $input = $this->post(['korisnik', 'tekst']);
+        $input = $this->post(['korisnik_id', 'tekst']);
 
         $validator = new Validator($input, [
-            'korisnik' => 'potrebno|postoji:Korisnik',
+            'korisnik_id' => 'potrebno|postoji:Korisnik',
             'tekst' => 'potrebno'
         ]);
 
@@ -65,7 +65,7 @@ class PorukeKontroler extends AdminKontroler
             $rez = 'Promjene su sačuvane.';
         } else {
             $poruka = new Poruka($input);
-            $poruka->kad = microtime(true);
+            $poruka->kad = time();
             $rez = 'Nova poruka je kreirana.';
         }
         $poruka->sacuvaj();
