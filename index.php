@@ -24,6 +24,7 @@ $router = new \Framework\Http\Router;
 require PATH . '/app/routes.php';
 
 // Učitaj pomoćne funkcije
+require PATH . '/framework/helpers.php';
 require PATH . '/app/helpers.php';
 
 // Podesi jednokratne sesije
