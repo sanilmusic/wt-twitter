@@ -31,3 +31,5 @@ $router->get('admin/poruke/nova', 'Admin\PorukeKontroler@nova');
 $router->get('admin/poruke/izmjena', 'Admin\PorukeKontroler@izmjena');
 $router->post('admin/poruke/sacuvaj', 'Admin\PorukeKontroler@sacuvaj');
 $router->get('admin/poruke/obrisi', 'Admin\PorukeKontroler@obrisi');
+
+$router->get('admin/transfer', 'Admin\TransferKontroler@transfer');
