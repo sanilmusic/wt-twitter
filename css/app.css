@@ -429,6 +429,7 @@ header.prijavljen .meni ul li ul li {
     -moz-border-radius: 5px;
     border-radius: 5px;
     font-size: 14px;
+    min-height: 5em;
 }
 
 .poruka .balon:after {
