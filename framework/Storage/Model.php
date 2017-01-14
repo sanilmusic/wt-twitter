@@ -73,10 +73,7 @@ abstract class Model
      * 
      * @return \Framework\Storage\Query
      */
-    public static function query()
-    {
-        return new Query(static::sve());
-    }
+    abstract public static function query();
 
     /**
      * Vraća niz svih spremljenih stavki.

@@ -16,39 +16,22 @@ class Model extends BaseModel
     public static $tabela;
 
     /**
+     * Vraća novu Query instancu preko koje se mogu ispitivati uslovi.
+     * 
+     * @return \Framework\Storage\Query
+     */
+    public static function query() {
+        return new Query(static::class);
+    }
+
+    /**
      * Vraća niz svih spremljenih stavki.
      * 
      * @return array
      */
     public static function sve()
     {
-        $veza = Connection::veza();
-
-        $redovi = $veza->query('SELECT * FROM ' . static::$tabela, PDO::FETCH_ASSOC);
-
-        return static::kreirajIzNiza($redovi->fetchAll());
-    }
-
-    /**
-     * Kreira niz modela iz dvodimenzionalnog niza redova.
-     * 
-     * @param  array $niz
-     * @return array
-     */
-    protected static function kreirajIzNiza(array $niz)
-    {
-        $rezultat = [];
-        foreach ($niz as $red) {
-            $id = $red['id'];
-            unset($red['id']);
-
-            $model = new static($red);
-            $model->id = $id;
-
-            $rezultat[] = $model;
-        }
-
-        return $rezultat;
+        return static::query()->sve();
     }
 
     /**

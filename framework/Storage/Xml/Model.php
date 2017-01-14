@@ -3,7 +3,7 @@
 namespace Framework\Storage\Xml;
 
 use Framework\Storage\Model as BaseModel;
-use Framework\Storage\Query;
+use Framework\Storage\Xml\Query;
 use SimpleXMLElement;
 
 abstract class Model extends BaseModel
@@ -33,6 +33,15 @@ abstract class Model extends BaseModel
     }
 
     /**
+     * Vraća novu Query instancu preko koje se mogu ispitivati uslovi.
+     * 
+     * @return \Framework\Storage\Query
+     */
+    public static function query() {
+        return new Query(static::sve());
+    }
+
+    /**
      * Vraća niz svih spremljenih stavki.
      * 
      * @return array
@@ -59,13 +68,10 @@ abstract class Model extends BaseModel
     {
         $atributi = [];
         foreach ($cvor->children() as $child) {
-            if (($ime = $child->getName()) != 'id') {
-                $atributi[$ime] = (string) $child;
-            }
+            $atributi[$child->getName()] = (string) $child;
         }
 
         $model = new static($atributi);
-        $model->id = (int) $cvor->id;
 
         return $model;
     }
