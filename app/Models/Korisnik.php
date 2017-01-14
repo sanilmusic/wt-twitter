@@ -53,18 +53,39 @@ class Korisnik extends Model
      */
     public function dajKogaPrati()
     {
-        $stmt = Connection::veza()->query('SELECT DISTINCT prati_id FROM pratitelji WHERE pratitelj_id = ' . $this->id, PDO::FETCH_ASSOC
-        );
+        $stmt = Connection::veza()->query('SELECT DISTINCT prati_id FROM pratitelji WHERE pratitelj_id = ' . $this->id, PDO::FETCH_ASSOC);
 
-        if ($stmt->rowCount() == 0) {
+        return $this->dajKorisnike($stmt->fetchAll(), 'prati_id');
+    }
+
+    /**
+     * Vraća niz korisnika koji prate trenutnog korisnika.
+     * 
+     * @return array
+     */
+    public function dajPratitelje()
+    {
+        $stmt = Connection::veza()->query('SELECT DISTINCT pratitelj_id FROM pratitelji WHERE prati_id = ' . $this->id, PDO::FETCH_ASSOC);
+
+        return $this->dajKorisnike($stmt->fetchAll(), 'pratitelj_id');
+    }
+
+    /**
+     * Posmatra niz redova i na osnovu definisane kolone pronalazi korisnike.
+     * 
+     * @param  array $redovi
+     * @param  string $kolona
+     * @return array
+     */
+    protected function dajKorisnike($redovi, $kolona)
+    {
+        if (empty($redovi)) {
             return [];
         }
 
-        $rezultat = $stmt->fetchAll();
-
         $query = static::query()->operator('ILI');
-        foreach ($rezultat as $r) {
-            $query->gdje('id', $r['prati_id']);
+        foreach ($redovi as $r) {
+            $query->gdje('id', $r[$kolona]);
         }
 
         return $query->sve();

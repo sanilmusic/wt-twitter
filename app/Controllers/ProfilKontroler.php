@@ -9,15 +9,17 @@ class ProfilKontroler extends Controller
 {
     public function index()
     {
-        $korisnik = Korisnik::query()->gdje('id', $this->get('id'))->prvi();
+        $trenutni = Korisnik::query()->gdje('id', $this->get('id'))->prvi();
 
-        if (!$korisnik) {
+        if (!$trenutni) {
             $this->redirect('/');
         }
 
         $this->view('index', [
-            'korisnik' => $korisnik,
-            'poruke' => $korisnik->dajPoruke()
+            'trenutni' => $trenutni,
+            'poruke' => $trenutni->dajPoruke(),
+            'prati' => $trenutni->dajKogaPrati(),
+            'pratitelji' => $trenutni->dajPratitelje()
         ]);
     }
 }
