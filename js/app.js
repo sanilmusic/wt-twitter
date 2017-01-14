@@ -212,6 +212,14 @@ TWITTER = {
                 }
             });
         }
+
+        var toggle = document.getElementById('prati-toggle');
+        toggle.addEventListener('click', function() {
+            var id = encodeURI(toggle.getAttribute('data-id'));
+            ajaxRequest('GET', 'index.php?sta=profil/toggle&id=' + id, function() {
+                toggle.innerText = (toggle.innerText == 'Prati' ? 'Prestani pratiti' : 'Prati');
+            });
+        });
     }
 };
 

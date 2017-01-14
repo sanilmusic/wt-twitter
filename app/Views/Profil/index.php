@@ -12,9 +12,15 @@
                 <img src="uploads/slika4.jpg" alt="Slika 4">
             </div>
             <h1 class="ime-prezime"><?= e($trenutni->dajPunoIme()) ?></h1>
-            <p class="kratak-opis">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis vulputate urna, et finibus risus. Donec tristique, augue ac dictum luctus, leo elit tristique augue, nec porttitor quam dui id justo. Sed lacus neque, accumsan in dolor eget, posuere scelerisque orci. Pellentesque nisl turpis, tempor at urna non, pharetra venenatis nunc. Nam velit est, malesuada at ante at, pellentesque tincidunt risus. Suspendisse pulvinar metus quis nibh ultricies, non dictum felis convallis. Integer neque odio, rhoncus ac pharetra sed, sodales sed nibh.
-            </p>
+            <?php if ($korisnik && $korisnik->id != $trenutni->id): ?>
+                <button type="button" class="prati-btn" id="prati-toggle" data-id="<?= $trenutni->id ?>">
+                    <?php if ($korisnik->daLiPrati($trenutni->id)): ?>
+                        Prestani pratiti
+                    <?php else: ?>
+                        Prati
+                    <?php endif ?>
+                </button>
+            <?php endif ?>
         </div>
         <div class="kolona kolona-4">
             <div class="clearfix statistika">

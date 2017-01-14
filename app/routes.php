@@ -7,6 +7,7 @@ $router->get('lozinka', 'LozinkaKontroler@forma');
 $router->get('nalog', 'NalogKontroler@index');
 
 $router->get('profil', 'ProfilKontroler@index');
+$router->get('profil/toggle', 'ProfilKontroler@toggle');
 
 $router->get('prijava', 'AuthKontroler@prijavaForma');
 $router->post('prijava', 'AuthKontroler@prijava');

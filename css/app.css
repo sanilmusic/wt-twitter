@@ -664,3 +664,6 @@ header .pretraga ul li a {
 header .pretraga ul li a:hover {
     color: #5d618c;
 }
+.prati-btn {
+    width: 100%;
+}

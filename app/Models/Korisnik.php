@@ -111,4 +111,17 @@ class Korisnik extends Model
 
         return $query->sve();
     }
+
+    /**
+     * Provjeri da li korisnik prati drugog korisnika.
+     * 
+     * @param  int $id
+     * @return bool
+     */
+    public function daLiPrati($id)
+    {
+        $stmt = Connection::veza()->query('SELECT COUNT(*) FROM pratitelji WHERE pratitelj_id = ' . $this->id . ' AND prati_id = ' . $id);
+
+        return ($stmt->fetchColumn(0) == 1);
+    }
 }

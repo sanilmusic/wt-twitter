@@ -5,10 +5,9 @@
             </div><div class="red">
         <?php endif ?>
         <div class="kolona kolona-3">
-            <div class="korisnik">
+            <div class="korisnik clearfix">
                 <img class="slika" src="images/user.png" alt="Korisnik">
-                <h3><?= e($korisnici[$i]->dajPunoIme()) ?></h3>
-                <button type="button">Prestani pratiti</button>
+                <h3><a href="index.php?sta=profil&id=<?= $korisnici[$i]->id ?>"><?= e($korisnici[$i]->dajPunoIme()) ?></a></h3>
             </div>
         </div>
     <?php endfor ?>
