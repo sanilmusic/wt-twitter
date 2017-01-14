@@ -4,13 +4,6 @@ namespace Framework\Storage;
 
 abstract class Model
 {
-     /**
-     * Jedinstveni ID trenutnog entiteta.
-     * 
-     * @var int
-     */
-    protected $id;
-
     /**
      * Atributi koji opisuju trenutni entitet.
      * 
@@ -47,9 +40,7 @@ abstract class Model
      */
     public function __get($ime)
     {
-        if ($ime == 'id') {
-            return $this->id;
-        } elseif (!array_key_exists($ime, $this->atributi)) {
+        if (!array_key_exists($ime, $this->atributi)) {
             return null;
         }
 
@@ -63,9 +54,7 @@ abstract class Model
      */
     public function atributi()
     {
-        return array_merge([
-            'id' => $this->id,
-        ], $this->atributi);
+        return $this->atributi;
     }
 
     /**
