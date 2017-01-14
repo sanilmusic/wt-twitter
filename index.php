@@ -36,7 +36,15 @@ if (array_key_exists('noveJednokratne', $_SESSION)) {
 $_SESSION['noveJednokratne'] = [];
 
 // Preostale aktivnosti obavlja router
-$router->rutiraj();
+ob_start();
+try {
+    $router->rutiraj();
+} catch (Exception $e) {
+    ob_clean();
+    echo 'Greška :(';
+}
+
+ob_end_flush();
 
 // Počisti jednokratne sesije
 foreach ($stareJednokratne as $stari) {
