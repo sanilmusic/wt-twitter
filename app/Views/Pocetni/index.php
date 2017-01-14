@@ -55,24 +55,6 @@
                     <img class="moja-slika" src="images/user.png" alt="Korisnik">
                     <h1 class="ime-prezime"><?= e(korisnik()->dajPunoIme()) ?></h1>
                 </div>
-                <div class="trendovi">
-                    <h3>O čemu se piše?</h3>
-                    <hr>
-                    <ul>
-                        <li>
-                            Lorem ipsum
-                            <span class="broj-poruka">10 poruka</span>
-                        </li>
-                        <li>
-                            Lorem ipsum
-                            <span class="broj-poruka">10 poruka</span>
-                        </li>
-                        <li>
-                            Lorem ipsum
-                            <span class="broj-poruka">10 poruka</span>
-                        </li>
-                    </ul>
-                </div>
             </div>
             <div class="kolona kolona-4">
                 <?php foreach ($porukeOstalih as $poruka): ?>
