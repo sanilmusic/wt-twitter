@@ -64,9 +64,6 @@ class AuthKontroler extends Controller
 
     public function registracija()
     {
-        // Zahtjeva se da samo admin može upravljati podacima
-        $this->redirect('/');
-
         $this->daLiJeOdjavljen();
 
         $input = $this->post(['ime', 'prezime', 'email', 'lozinka', 'potvrda_lozinke']);
@@ -89,6 +86,7 @@ class AuthKontroler extends Controller
 
         // Kreiraj novog korisnika
         $korisnik = new Korisnik($input);
+        $korisnik->admin = 0;
         $korisnik->sacuvaj();
 
         // Prijavi korisnika nakon registracije
