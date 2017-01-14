@@ -141,15 +141,17 @@ TWITTER = {
     },
     profil: function() {
          var nova = document.getElementById('nova-poruka');
-        nova.addEventListener('keydown', function(e) {
-            if (e.keyCode == 13 && !e.shiftKey) {
-                ajaxRequest('POST', 'index.php?sta=profil/postavi', { poruka: nova.value }, function(odg) {
-                    if (odg == 'OK') {
-                        window.location.reload();
-                    }
-                });
-            }
-        });
+         if (nova) {
+            nova.addEventListener('keydown', function(e) {
+                if (e.keyCode == 13 && !e.shiftKey) {
+                    ajaxRequest('POST', 'index.php?sta=profil/postavi', { poruka: nova.value }, function(odg) {
+                        if (odg == 'OK') {
+                            window.location.reload();
+                        }
+                    });
+                }
+            });
+        }
 
         document.getElementById('galerija-fullscreen').addEventListener('keydown', function(e) {
             if (e.keyCode === 27) {
@@ -236,12 +238,14 @@ TWITTER = {
         }
 
         var toggle = document.getElementById('prati-toggle');
-        toggle.addEventListener('click', function() {
-            var id = encodeURI(toggle.getAttribute('data-id'));
-            ajaxRequest('GET', 'index.php?sta=profil/toggle&id=' + id, function() {
-                toggle.innerText = (toggle.innerText == 'Prati' ? 'Prestani pratiti' : 'Prati');
+        if (toggle) {
+            toggle.addEventListener('click', function() {
+                var id = encodeURI(toggle.getAttribute('data-id'));
+                ajaxRequest('GET', 'index.php?sta=profil/toggle&id=' + id, function() {
+                    toggle.innerText = (toggle.innerText == 'Prati' ? 'Prestani pratiti' : 'Prati');
+                });
             });
-        });
+        }
     }
 };
 
