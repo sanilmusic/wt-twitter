@@ -3,6 +3,7 @@
 namespace Framework\Storage\Database;
 
 use PDO;
+use ReflectionClass;
 use Framework\Storage\Query as BaseQuery;
 
 class Query extends BaseQuery {
@@ -77,7 +78,8 @@ class Query extends BaseQuery {
      */
     protected function formirajStmt($sta, $limit = 0)
     {
-        $query = 'SELECT ' . $sta . ' FROM ' . $this->model::$tabela;
+        $class = new ReflectionClass($this->model);
+        $query = 'SELECT ' . $sta . ' FROM ' . $class->getStaticPropertyValue('tabela');
 
         $values = [];
         for ($i = 0; $i < count($this->uslovi); $i++) {

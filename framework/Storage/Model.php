@@ -68,20 +68,6 @@ abstract class Model
         $this->atributi = array_merge($this->atributi, $atributi);
     }
 
-     /**
-     * Vraća novu Query instancu preko koje se mogu ispitivati uslovi.
-     * 
-     * @return \Framework\Storage\Query
-     */
-    abstract public static function query();
-
-    /**
-     * Vraća niz svih spremljenih stavki.
-     * 
-     * @return array
-     */
-    public static abstract function sve();
-
     /**
      * Sačuvaj trenutni model.
      * 
