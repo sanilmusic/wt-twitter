@@ -43,6 +43,10 @@
             <hr>
             <div id="tabovi">
                 <div id="tab-poruke">
+                    <?php if ($trenutni->id == $korisnik->id): ?>
+                        <textarea class="nova-poruka" placeholder="Upiši novu poruku..." id="nova-poruka"></textarea
+                        >
+                    <?php endif ?>
                     <div class="profil-poruke">
                         <?php foreach ($poruke as $poruka): ?>
                             <div class="clearfix poruka">

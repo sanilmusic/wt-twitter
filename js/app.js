@@ -2,7 +2,7 @@ function loadingAnimation(action) {
     document.getElementById('loading').style.display = (action === 'hide' ? 'none' : 'block');
 }
 
-function ajaxRequest(method, url, callback) {
+function ajaxRequest(method, url, data, callback) {
     var request = new XMLHttpRequest();
 
     request.onreadystatechange = function() {
@@ -11,8 +11,19 @@ function ajaxRequest(method, url, callback) {
         }
     };
 
-    request.open(method, url, true);
-    request.send();
+    var query = [];
+    for (var key in data) {
+        query.push(encodeURIComponent(key) + '=' + encodeURIComponent(data[key]));
+    }
+
+    if (method == 'GET') {
+        request.open(method, url + '&' + query.join('&'), true);
+        request.send();
+    } else if (method == 'POST') {
+        request.open(method, url, true);
+        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        request.send(query.join('&'));
+    }
 }
 
 TWITTER = {
@@ -46,7 +57,7 @@ TWITTER = {
             pretraga.addEventListener('keyup', function() {
                 if (pretraga.value.length !== prethodnaDuzina) {
                     prethodnaDuzina = pretraga.value.length;
-                    ajaxRequest('GET', 'index.php?sta=pretraga/ajax&q=' + encodeURI(pretraga.value), function(json) {
+                    ajaxRequest('GET', 'index.php?sta=pretraga/ajax', { q: pretraga.value }, function(json) {
                         var rezultati = JSON.parse(json);
 
                         // Pobrisi postojece sugestije
@@ -129,6 +140,17 @@ TWITTER = {
         });
     },
     profil: function() {
+         var nova = document.getElementById('nova-poruka');
+        nova.addEventListener('keydown', function(e) {
+            if (e.keyCode == 13 && !e.shiftKey) {
+                ajaxRequest('POST', 'index.php?sta=profil/postavi', { poruka: nova.value }, function(odg) {
+                    if (odg == 'OK') {
+                        window.location.reload();
+                    }
+                });
+            }
+        });
+
         document.getElementById('galerija-fullscreen').addEventListener('keydown', function(e) {
             if (e.keyCode === 27) {
                 this.style.display = 'none';

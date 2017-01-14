@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Poruka;
 use App\Models\Korisnik;
 use Framework\Http\Controller;
 use Framework\Storage\Database\Connection;
@@ -41,6 +42,28 @@ class ProfilKontroler extends Controller
         }
 
         echo '';
+    }
+
+    public function postavi()
+    {
+        if (!korisnik()) {
+            return;
+        }
+
+        $poruka = trim($this->post('poruka'));
+
+        if (strlen($poruka) == 0) {
+            return;
+        }
+
+        $model = new Poruka([
+            'korisnik_id' => korisnik()->id,
+            'tekst' => $poruka,
+            'kad' => time()
+        ]);
+        $model->sacuvaj();
+
+        echo 'OK';
     }
 
     /**

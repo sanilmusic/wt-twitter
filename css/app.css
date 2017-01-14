@@ -667,3 +667,8 @@ header .pretraga ul li a:hover {
 .prati-btn {
     width: 100%;
 }
+
+.nova-poruka {
+    width: 100%;
+    height: 5em;
+}

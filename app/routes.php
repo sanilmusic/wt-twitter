@@ -8,6 +8,7 @@ $router->get('nalog', 'NalogKontroler@index');
 
 $router->get('profil', 'ProfilKontroler@index');
 $router->get('profil/toggle', 'ProfilKontroler@toggle');
+$router->post('profil/postavi', 'ProfilKontroler@postavi');
 
 $router->get('prijava', 'AuthKontroler@prijavaForma');
 $router->post('prijava', 'AuthKontroler@prijava');
