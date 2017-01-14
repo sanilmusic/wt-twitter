@@ -33,3 +33,5 @@ $router->post('admin/poruke/sacuvaj', 'Admin\PorukeKontroler@sacuvaj');
 $router->get('admin/poruke/obrisi', 'Admin\PorukeKontroler@obrisi');
 
 $router->get('admin/transfer', 'Admin\TransferKontroler@transfer');
+
+$router->get('api/korisnici', 'ApiKontroler@korisnici');
