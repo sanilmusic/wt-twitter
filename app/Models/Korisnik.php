@@ -43,7 +43,7 @@ class Korisnik extends Model
      */
     public function dajPoruke()
     {
-        return Poruka::query()->gdje('korisnik', $this->id)->sve();
+        return Poruka::query()->gdje('korisnik_id', $this->id)->sve();
     }
 
     /**
