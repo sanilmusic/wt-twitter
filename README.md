@@ -4,6 +4,22 @@ Projekat se radi za potrebe kursa "Web tehnologije" na Elektrotehničkom fakulte
 
 Autor: Sanil Musić (16997)
 
+#### Spirala 4
+---
+
+###### Šta je urađeno?
+ - Napravljena je baza podataka, čiji dump i ERD su uključeni u repozitorij.
+ - U meni admin dijela stranice je dodano novo dugme koje pokreće skriptu za transfer podataka iz postojećih XML datoteka u bazu podataka. Prenose se isključivo podaci koji već ne postoje u bazi (ispitivanje se vrši na osnovu email adrese kod korisnika, odnosno korisničkog ID-a i teksta kod poruka). Dodatno, transfer će očuvati integritet podataka, u smislu da će autor poruke ostati isti nakon transfera.
+ - Svi podaci se dobavljaju iz baze podataka. Postoji mogućnost da se jednostavno vrati na korištenje XML datoteka.
+ - Spirala 3 je još uvijek dostupna na starom URL-u. Spirala 4 se može pogledati na sljedećem URL-u: http://new-default-wt.44fs.preview.openshiftapps.com/.
+ - Napravljen je web servis kojem se može pristupiti preko "index.php?sta=api/korisnici". Web servis podržava dobavljanje svih korisnika i pojedinačnih korisnika. Osjetljivi podaci (poput lozinke) su isključeni iz prikaza. Detalji korištenja web servisa mogu se uočiti iz screenshot-a koji su smješteni u /screenshots direktorij.
+
+###### Šta nije urađeno?
+/
+
+###### Bug-ovi
+Nisu uočeni bug-ovi.
+
 #### Spirala 3
 ---
 
