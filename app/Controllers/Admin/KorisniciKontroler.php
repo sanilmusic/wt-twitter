@@ -87,6 +87,7 @@ class KorisniciKontroler extends AdminKontroler
             $poruka = 'Promjene su sačuvane.';
         } else {
             $korisnik = new Korisnik($input);
+            $korisnik->admin = 0;
             $poruka = 'Novi korisnik je kreiran.';
         }
         $korisnik->sacuvaj();
