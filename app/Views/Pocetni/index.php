@@ -75,30 +75,14 @@
                 </div>
             </div>
             <div class="kolona kolona-4">
-                <div class="clearfix poruka">
-                    <img class="slika-profila" src="images/user.png" alt="Korisnik">
-                    <div class="balon">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec est justo, fringilla sed ornare quis, consectetur vel odio. Sed purus risus, porta a orci non, elementum accumsan nisi. Duis ultrices aliquet hendrerit. Aliquam erat volutpat.
+                <?php foreach ($porukeOstalih as $poruka): ?>
+                    <div class="clearfix poruka">
+                        <img class="slika-profila" src="images/user.png" alt="Korisnik">
+                        <div class="balon">
+                            <?= e($poruka->tekst); ?>
+                        </div>
                     </div>
-                </div>
-                <div class="clearfix poruka">
-                    <img class="slika-profila" src="images/user.png" alt="Korisnik">
-                    <div class="balon">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec est justo, fringilla sed ornare quis, consectetur vel odio. Sed purus risus, porta a orci non, elementum accumsan nisi. Duis ultrices aliquet hendrerit. Aliquam erat volutpat.
-                    </div>
-                </div>
-                <div class="clearfix poruka">
-                    <img class="slika-profila" src="images/user.png" alt="Korisnik">
-                    <div class="balon">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec est justo, fringilla sed ornare quis, consectetur vel odio. Sed purus risus, porta a orci non, elementum accumsan nisi. Duis ultrices aliquet hendrerit. Aliquam erat volutpat.
-                    </div>
-                </div>
-                <div class="clearfix poruka">
-                    <img class="slika-profila" src="images/user.png" alt="Korisnik">
-                    <div class="balon">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec est justo, fringilla sed ornare quis, consectetur vel odio. Sed purus risus, porta a orci non, elementum accumsan nisi. Duis ultrices aliquet hendrerit. Aliquam erat volutpat.
-                    </div>
-                </div>
+                <?php endforeach ?>
             </div>
         </div>
     </div>
