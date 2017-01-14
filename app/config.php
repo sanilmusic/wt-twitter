@@ -3,10 +3,10 @@
 return [
 
     'database' => [
-        'host' => 'localhost',
-        'username' => 'root',
-        'password' => '123',
-        'database' => 'wt-twitter',
+        'host' => 'mysql-55-centos7',
+        'username' => 'wtuser',
+        'password' => 'teSTna123',
+        'database' => 'wtdb',
         'charset' => 'utf8'
     ]
 
