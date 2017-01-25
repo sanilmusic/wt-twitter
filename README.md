@@ -4,6 +4,9 @@ Projekat se radi za potrebe kursa "Web tehnologije" na Elektrotehničkom fakulte
 
 Autor: Sanil Musić (16997)
 
+#### Napomene
+ - Automatski update na Openshift platformi je privremeno pokvario deployment. Baza je ponovo popunjena 25. januara 2017. godine i time su greške otklonjene. Kao rezultat update-a, Spirala 3 više nije dostupna na originalnom linku.
+
 #### Spirala 4
 ---
 
